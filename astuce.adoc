@@ -1,0 +1,9 @@
+## Astuce
+
+### Ecrire dans un fichier en ligne de commande
+
+```console
+cat > nomdufichier << eof
+> blabla
+> eof
+```

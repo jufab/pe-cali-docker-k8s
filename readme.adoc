@@ -1,0 +1,28 @@
+# Coding Lab - Docker - Kubernetes
+:toc:
+:imagesdir: docker/
+
+## Pré-requis
+
+Un compte github (pour le lab K8s) ou un compte docker (pour le lab K8s et Docker)
+
+include::liens-utiles.adoc[]
+
+## Pour le lab
+
+Plusieurs possibilités pour tester
+
+[#lab-docker]
+### Pour Docker
+
+* https://labs.play-with-docker.com/
+* https://labs.play-with-k8s.com/
+
+### Pour Kubernetes
+
+* https://labs.play-with-k8s.com/
+* https://kubernetes.io/docs/tutorials/kubernetes-basics/
+
+include::docker/readme.adoc[]
+include::k8s/readme.adoc[]
+include::astuce.adoc[]

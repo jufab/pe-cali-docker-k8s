@@ -1,0 +1,31 @@
+# Première Partie - Docker
+
+:toc:
+(durée estimée 1h)
+
+Docker est une technologie de virtualisation par conteneurs reposant sur le LXC (LinuX Containers)
+
+## Petite Vidéo d'explication
+
+video::caXHwYC3tq8[youtube]
+
+## Q & A
+
+Rappel : 
+
+image::assets/docker-structure.jpg[]
+
+include::lab-docker.adoc[]
+
+include::lab-docker-2.adoc[]
+
+## Ce qui ne sera pas vu dans ce lab
+
+_Mais que vous pourriez par la suite approfondir_
+
+* Le principe des couches (Layer) au sein de docker qui constitue une image
+* Le build d'image multilayer
+* le réseau : création, communication inter container etc...
+* la gestion des images et les "insecures registry"
+* docker-compose : ou comment démarrer une stack complète.
+* docker-swarm : orchestrateur

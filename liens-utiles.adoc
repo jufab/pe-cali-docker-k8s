@@ -1,0 +1,5 @@
+## liens utiles
+source :  
+
+* https://www.pluralsight.com/courses/getting-started-kubernetes
+* https://kubernetes.io/docs/tutorials/kubernetes-basics/

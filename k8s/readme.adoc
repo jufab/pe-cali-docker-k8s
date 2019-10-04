@@ -1,0 +1,80 @@
+# Deuxième Partie - Kubernetes
+:toc:
+
+(Durée estimé 2h)
+
+## Mais c'est quoi Kubernetes?
+
+On parlera ici rapidement d'une archi Kubernetes
+
+=> Orchestrateur (autres connus : Swarm, Rancher, Mesos, Nomad)
+=> Un cluster K8S :
+- c'est 1-N master
+- N noeud
+
+
+[ditaa]
+....
++-----------------------------------------------------------------------------------------+
+|                                                                                         |
+|                                             +----------------+     +-----------------+  |
+|                                             |                |     |                 |  |
+|                                             |     NODE       |     |      NODE       |  |
+|                                             |                |     |                 |  |
+|                                             |                |     |                 |  |
+|     +--------------------------+            +----------------+     +-----------------+  |
+|     |                          |                                                        |
+|     |  +-----------------------+----+       +----------------+     +-----------------+  |
+|     |  |                            |       |                |     |                 |  |
+|     |  |    +-----------------------+---+   |     NODE       |     |      NODE       |  |
+|     |  |    |                           |   |                |     |                 |  |
+|     |  |    |                           |   |                |     |                 |  |
+|     |  |    |                           |   +----------------+     +-----------------+  |
+|     +--+    |           MASTER          |                                               |
+|        |    |                           |   +----------------+     +-----------------+  |
+|        |    |                           |   |                |     |                 |  |
+|        +----+                           |   |     NODE       |     |      NODE       |  |
+|             |                           |   |                |     |                 |  |
+|             +---------------------------+   |                |     |                 |  |
+|                                             +----------------+     +-----------------+  |
+|                                                                                         |
+|                                                                                         |
+|   K8S CLUSTER                                                                           |
+|                                                                                         |
++-----------------------------------------------------------------------------------------+
+
+....
+
+-----------------
+Master
+-----------------
+Master = Control plane
+Bonne pratique : pas de travaux sur le master (on laisse faire les noeuds pour ça)
+kube-apiserver : frontend du control plane, expose les api REST et parle avec du JSON (via des fichier manifest)
+Cluster store (KV) (etcd): persistent storage pour l'état et la config du cluster. Utilise etcd
+kube-controller-manager : le controller des controller (gere les noeuds, les endpoints, les namespace etc...), il gere les evenements/changement et aide à maintenir dans l'état désiré
+kube-scheduler: va ordonnacer le travail et l'assigner au noeud selon les contraintes et configuration
+tout est gérer via l'apiserver qui communique avec les autre (KV,Controller,Scheduler)
+
+------------------
+Node
+------------------
+Node = Worker = Minion
+Il contient Kubelet : l'agent . Il enregistre le noeud avec le cluster et observe l'apiserver et communique avec le master
+Le kubelet ne gere pas l'état du contenu : il renvoie l'information au master qui prendra la décision
+Il exposes les endpoints sur le port :10255 => il expose par exemple 3 endpoints /spec /healthz /pods (il y en a d'autre)
+Il contient le container engine : qui permet de réaliser le pull des images, démarrer et arreter les containers. Le Container Engine est pluggé avec Docker mais peut être plugger à d'autre (rkt, containerd, podman etc..)
+kube-proxy : va gérer toute la partie réseau, assigner une adresse ip pour chaque pod, gérer la partie loadbalancing etc..
+
+
+2) Pratiques
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta4/aio/deploy/recommended.yaml
+
+
+- Pod
+- ConfigMap
+- Service
+- Deployment
+- Ingress
+
