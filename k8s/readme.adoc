@@ -1,20 +1,22 @@
-# Deuxième Partie - Kubernetes
+= Deuxième Partie - Kubernetes
 :toc:
 
 (Durée estimé 2h)
 
-## Mais c'est quoi Kubernetes?
+== Mais c'est quoi Kubernetes?
 
 On parlera ici rapidement d'une archi Kubernetes
 
-=> Orchestrateur (autres connus : Swarm, Rancher, Mesos, Nomad)
-=> Un cluster K8S :
-- c'est 1-N master
-- N noeud
+-> Orchestrateur (autres connus : Swarm, Rancher, Mesos, Nomad)
+
+-> Un cluster K8S :
+
+* c'est 1-N master
+* N noeud
 
 
 [ditaa]
-....
+----
 +-----------------------------------------------------------------------------------------+
 |                                                                                         |
 |                                             +----------------+     +-----------------+  |
@@ -43,7 +45,7 @@ On parlera ici rapidement d'une archi Kubernetes
 |                                                                                         |
 +-----------------------------------------------------------------------------------------+
 
-....
+----
 
 -----------------
 Master

@@ -1,9 +1,10 @@
-## Astuce
+== Astuce
 
-### Ecrire dans un fichier en ligne de commande
+=== Ecrire dans un fichier en ligne de commande
 
-```console
+[source,console]
+----
 cat > nomdufichier << eof
 > blabla
 > eof
-```
+----

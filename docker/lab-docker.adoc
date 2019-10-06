@@ -1,4 +1,4 @@
-## Créer notre première image et container
+== Créer notre première image et container
 
 Utilisation du projet "whoami" dans le dossier "docker".
 
@@ -10,9 +10,10 @@ Utilisation du projet "whoami" dans le dossier "docker".
 
 3) lancer la comande dans le terminal
 
-```console
+[source,console]
+----
 docker version
-```
+----
 
 pour s'assurer que docker est bien présent
 
@@ -27,9 +28,10 @@ pour s'assurer que docker est bien présent
 
 6) lancer la commande
 
-```console
+[source,console]
+----
 docker build -t whoami . 
-```
+----
 
 (_Description de la commande_)
 
@@ -37,23 +39,26 @@ L'image se créé à partir du contenu décrit dans le Dockerfile
 
 on peut vérifier la présence de l'image via la commande
 
-```console
+[source,console]
+----
 docker images
-```
+----
 
 7) Lancer la commande
 
-```console
+[source,console]
+----
 docker run -d -p 80:80 --name whoami whoami
-```
+----
 
 (_Description de la commande_)
 
 On peut vérifier que le container est opérationnel via la commande
 
-```console
+[source,console]
+----
 docker ps
-```
+----
 
 8) On vérifie l'accès à l'application :
 
@@ -61,9 +66,10 @@ Un petit "80" s'affiche au dessus du terminal. il permet d'accéder à notre ser
 
 On peut aussi vérifier en ligne de commande que le hostname correspond bien à celui qui s'affiche via la commande :
 
-```console
+[source,console]
+----
 docker inspect --format '{{ .Config.Hostname}}' whoami
-```
+----
 
 (_Description de la commande_)
 

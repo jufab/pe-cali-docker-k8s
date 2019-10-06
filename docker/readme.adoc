@@ -1,15 +1,15 @@
-# Première Partie - Docker
+= Première Partie - Docker
 
 :toc:
 (durée estimée 1h)
 
 Docker est une technologie de virtualisation par conteneurs reposant sur le LXC (LinuX Containers)
 
-## Petite Vidéo d'explication
+== Petite Vidéo d'explication
 
 video::caXHwYC3tq8[youtube]
 
-## Q & A
+== Q & A
 
 Rappel : 
 
@@ -19,7 +19,7 @@ include::lab-docker.adoc[]
 
 include::lab-docker-2.adoc[]
 
-## Ce qui ne sera pas vu dans ce lab
+== Ce qui ne sera pas vu dans ce lab
 
 _Mais que vous pourriez par la suite approfondir_
 

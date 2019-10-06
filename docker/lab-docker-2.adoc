@@ -1,4 +1,4 @@
-## Récuperer et utiliser une image disponible
+== Récuperer et utiliser une image disponible
 
 Utilisation de l'image nginx.
 
@@ -16,9 +16,10 @@ de l'image "nginx" et copier la commande permettant de réaliser un "pull" de l'
 
 4) Réaliser le pull dans le terminal
 
-```console
+[source,console]
+----
 docker pull nginx
-```
+----
 
 (_Description de la commande_)
 
@@ -30,9 +31,10 @@ _Par la commande?_
 
 5) On exécute le container nginx par la commande
 
-```console
+[source,console]
+----
 docker run --name nginx -d -p 8080:80 nginx
-```
+----
 
 _On utilise ici le port 8080 car le port 80 est déja utilisé par le lab précédent_
 
@@ -40,19 +42,21 @@ _Le pull de l'image est facultatif. en lançant la commande de run, docker aurai
 
 6) Une fois tout vérifié et tester, on arrete et supprime les containers via les commandes :
 
-```console
+[source,console]
+----
 docker stop whoami
 docker rm whoami
 docker stop nginx
 docker rm nginx
-```
+----
 
 il existe une alternative plus radical en foçant l'arrêt via les commandes :
 
-```console
+[source,console]
+----
 docker rm -f whoami
 docker rm -f nginx
-```
+----
 
 *Conclusion*
 
