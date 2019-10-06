@@ -1,7 +1,7 @@
 = Coding Lab - Docker - Kubernetes
-:toc:
+:toc: left
 :imagesdir: docker/
-:awestruct-layout: base
+:sectnums:
 :showtitle:
 
 == Pré-requis
