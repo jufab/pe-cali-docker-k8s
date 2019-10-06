@@ -1,9 +1,8 @@
-= Deuxième Partie - Kubernetes
-:toc:
+== Deuxième Partie - Kubernetes
 
 (Durée estimé 2h)
 
-== Mais c'est quoi Kubernetes?
+=== Mais c'est quoi Kubernetes?
 
 On parlera ici rapidement d'une archi Kubernetes
 

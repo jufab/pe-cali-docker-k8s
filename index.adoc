@@ -1,7 +1,6 @@
 = Coding Lab - Docker - Kubernetes
 :toc: left
 :imagesdir: docker/
-:sectnums:
 :showtitle:
 
 == Pré-requis
@@ -26,5 +25,7 @@ Plusieurs possibilités pour tester
 * https://kubernetes.io/docs/tutorials/kubernetes-basics/
 
 include::docker/readme.adoc[]
+
 include::k8s/readme.adoc[]
+
 include::astuce.adoc[]

@@ -442,27 +442,31 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_pré_requis">1. Pré-requis</a></li>
-<li><a href="#_liens_utiles">2. liens utiles</a></li>
-<li><a href="#_pour_le_lab">3. Pour le lab</a>
+<li><a href="#_pré_requis">Pré-requis</a></li>
+<li><a href="#_liens_utiles">liens utiles</a></li>
+<li><a href="#_pour_le_lab">Pour le lab</a>
 <ul class="sectlevel2">
-<li><a href="#lab-docker">3.1. Pour Docker</a></li>
-<li><a href="#_pour_kubernetes">3.2. Pour Kubernetes</a></li>
+<li><a href="#lab-docker">Pour Docker</a></li>
+<li><a href="#_pour_kubernetes">Pour Kubernetes</a></li>
 </ul>
 </li>
 <li><a href="#_première_partie_docker">Première Partie - Docker</a>
-<ul class="sectlevel1">
-<li><a href="#_petite_vidéo_dexplication">1. Petite Vidéo d&#8217;explication</a></li>
-<li><a href="#_q_a">2. Q &amp; A</a></li>
-<li><a href="#_créer_notre_première_image_et_container">3. Créer notre première image et container</a></li>
-<li><a href="#_récuperer_et_utiliser_une_image_disponible">4. Récuperer et utiliser une image disponible</a></li>
-<li><a href="#_ce_qui_ne_sera_pas_vu_dans_ce_lab">5. Ce qui ne sera pas vu dans ce lab</a></li>
-<li><a href="#_mais_cest_quoi_kubernetes">6. Mais c&#8217;est quoi Kubernetes?</a></li>
-<li><a href="#_astuce">7. Astuce</a>
 <ul class="sectlevel2">
-<li><a href="#_ecrire_dans_un_fichier_en_ligne_de_commande">7.1. Ecrire dans un fichier en ligne de commande</a></li>
+<li><a href="#_petite_vidéo_dexplication">Petite Vidéo d&#8217;explication</a></li>
+<li><a href="#_q_a">Q &amp; A</a></li>
+<li><a href="#_créer_notre_première_image_et_container">Créer notre première image et container</a></li>
+<li><a href="#_récuperer_et_utiliser_une_image_disponible">Récuperer et utiliser une image disponible</a></li>
+<li><a href="#_ce_qui_ne_sera_pas_vu_dans_ce_lab">Ce qui ne sera pas vu dans ce lab</a></li>
 </ul>
 </li>
+<li><a href="#_deuxième_partie_kubernetes">Deuxième Partie - Kubernetes</a>
+<ul class="sectlevel2">
+<li><a href="#_mais_cest_quoi_kubernetes">Mais c&#8217;est quoi Kubernetes?</a></li>
+</ul>
+</li>
+<li><a href="#_astuce">Astuce</a>
+<ul class="sectlevel2">
+<li><a href="#_ecrire_dans_un_fichier_en_ligne_de_commande">Ecrire dans un fichier en ligne de commande</a></li>
 </ul>
 </li>
 </ul>
@@ -470,7 +474,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_pré_requis">1. Pré-requis</h2>
+<h2 id="_pré_requis">Pré-requis</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Un compte github (pour le lab K8s) ou un compte docker (pour le lab K8s et Docker)</p>
@@ -478,7 +482,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="_liens_utiles">2. liens utiles</h2>
+<h2 id="_liens_utiles">liens utiles</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>source :</p>
@@ -496,13 +500,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="_pour_le_lab">3. Pour le lab</h2>
+<h2 id="_pour_le_lab">Pour le lab</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Plusieurs possibilités pour tester</p>
 </div>
 <div class="sect2">
-<h3 id="lab-docker">3.1. Pour Docker</h3>
+<h3 id="lab-docker">Pour Docker</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -515,7 +519,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_pour_kubernetes">3.2. Pour Kubernetes</h3>
+<h3 id="_pour_kubernetes">Pour Kubernetes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -529,26 +533,25 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 </div>
-<h1 id="_première_partie_docker" class="sect0">Première Partie - Docker</h1>
+<div class="sect1">
+<h2 id="_première_partie_docker">Première Partie - Docker</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>(durée estimée 1h)</p>
 </div>
 <div class="paragraph">
 <p>Docker est une technologie de virtualisation par conteneurs reposant sur le LXC (LinuX Containers)</p>
 </div>
-<div class="sect1">
-<h2 id="_petite_vidéo_dexplication">1. Petite Vidéo d&#8217;explication</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_petite_vidéo_dexplication">Petite Vidéo d&#8217;explication</h3>
 <div class="videoblock">
 <div class="content">
 <iframe src="https://www.youtube.com/embed/caXHwYC3tq8?rel=0" frameborder="0" allowfullscreen></iframe>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_q_a">2. Q &amp; A</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_q_a">Q &amp; A</h3>
 <div class="paragraph">
 <p>Rappel :</p>
 </div>
@@ -558,10 +561,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_créer_notre_première_image_et_container">3. Créer notre première image et container</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_créer_notre_première_image_et_container">Créer notre première image et container</h3>
 <div class="paragraph">
 <p>Utilisation du projet "whoami" dans le dossier "docker".</p>
 </div>
@@ -684,10 +685,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ul>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_récuperer_et_utiliser_une_image_disponible">4. Récuperer et utiliser une image disponible</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_récuperer_et_utiliser_une_image_disponible">Récuperer et utiliser une image disponible</h3>
 <div class="paragraph">
 <p>Utilisation de l&#8217;image nginx.</p>
 </div>
@@ -786,10 +785,8 @@ docker rm -f nginx</code></pre>
 </ul>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_ce_qui_ne_sera_pas_vu_dans_ce_lab">5. Ce qui ne sera pas vu dans ce lab</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_ce_qui_ne_sera_pas_vu_dans_ce_lab">Ce qui ne sera pas vu dans ce lab</h3>
 <div class="paragraph">
 <p><em>Mais que vous pourriez par la suite approfondir</em></p>
 </div>
@@ -811,20 +808,21 @@ docker rm -f nginx</code></pre>
 <p>docker-compose : ou comment démarrer une stack complète.</p>
 </li>
 <li>
-<p>docker-swarm : orchestrateur
-= Deuxième Partie - Kubernetes
-:toc:</p>
+<p>docker-swarm : orchestrateur</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>(Durée estimé 2h)</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_mais_cest_quoi_kubernetes">6. Mais c&#8217;est quoi Kubernetes?</h2>
+<h2 id="_deuxième_partie_kubernetes">Deuxième Partie - Kubernetes</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>(Durée estimé 2h)</p>
+</div>
+<div class="sect2">
+<h3 id="_mais_cest_quoi_kubernetes">Mais c&#8217;est quoi Kubernetes?</h3>
 <div class="paragraph">
 <p>On parlera ici rapidement d&#8217;une archi Kubernetes</p>
 </div>
@@ -929,11 +927,12 @@ kube-proxy : va gérer toute la partie réseau, assigner une adresse ip pour cha
 </div>
 </div>
 </div>
+</div>
 <div class="sect1">
-<h2 id="_astuce">7. Astuce</h2>
+<h2 id="_astuce">Astuce</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_ecrire_dans_un_fichier_en_ligne_de_commande">7.1. Ecrire dans un fichier en ligne de commande</h3>
+<h3 id="_ecrire_dans_un_fichier_en_ligne_de_commande">Ecrire dans un fichier en ligne de commande</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-console" data-lang="console">cat &gt; nomdufichier &lt;&lt; eof
@@ -947,7 +946,7 @@ kube-proxy : va gérer toute la partie réseau, assigner une adresse ip pour cha
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-10-06 16:15:14 +0200
+Last updated 2019-10-06 22:03:18 +0200
 </div>
 </div>
 </body>

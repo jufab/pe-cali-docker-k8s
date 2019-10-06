@@ -1,4 +1,4 @@
-== Créer notre première image et container
+=== Créer notre première image et container
 
 Utilisation du projet "whoami" dans le dossier "docker".
 
