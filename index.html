@@ -454,7 +454,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#_petite_vidéo_dexplication">Petite Vidéo d&#8217;explication</a></li>
 <li><a href="#_q_a">Q &amp; A</a></li>
-<li><a href="#_créer_notre_première_image_et_container">Créer notre première image et container</a></li>
+<li><a href="#_créer_notre_première_image_et_conteneur">Créer notre première image et conteneur</a></li>
 <li><a href="#_récuperer_et_utiliser_une_image_disponible">Récuperer et utiliser une image disponible</a></li>
 <li><a href="#_ce_qui_ne_sera_pas_vu_dans_ce_lab">Ce qui ne sera pas vu dans ce lab</a></li>
 </ul>
@@ -562,7 +562,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_créer_notre_première_image_et_container">Créer notre première image et container</h3>
+<h3 id="_créer_notre_première_image_et_conteneur">Créer notre première image et conteneur</h3>
 <div class="paragraph">
 <p>Utilisation du projet "whoami" dans le dossier "docker".</p>
 </div>
@@ -576,7 +576,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>2) Après authentification, création de l&#8217;instance "Create instance"</p>
 </div>
 <div class="paragraph">
-<p>3) lancer la comande dans le terminal</p>
+<p>3) lancer la commande dans le terminal</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -674,13 +674,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Afficher la liste des images présentes sur la machine</p>
 </li>
 <li>
-<p>Instancier un container</p>
+<p>Instancier un conteneur</p>
 </li>
 <li>
-<p>Lister les container en cours d&#8217;exécution</p>
+<p>Lister les conteneurs en cours d&#8217;exécution</p>
 </li>
 <li>
-<p>Inspecter un container en cours d&#8217;exécution</p>
+<p>Inspecter un conteneur en cours d&#8217;exécution</p>
 </li>
 </ul>
 </div>
@@ -698,6 +698,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div class="paragraph">
 <p>2) Après authentification, création de l&#8217;instance "Create instance"</p>
+</div>
+<div class="paragraph">
+<p>(<em>si c&#8217;est pas déjà fait</em>)</p>
 </div>
 <div class="paragraph">
 <p>3) faire une recherche sur l&#8217;entrepôt d&#8217;images par défaut de docker</p>
@@ -793,19 +796,22 @@ docker rm -f nginx</code></pre>
 <div class="ulist">
 <ul>
 <li>
+<p>le push d&#8217;une image vers un entrepôt</p>
+</li>
+<li>
 <p>Le principe des couches (Layer) au sein de docker qui constitue une image</p>
 </li>
 <li>
 <p>Le build d&#8217;image multilayer</p>
 </li>
 <li>
-<p>le réseau : création, communication inter container etc&#8230;&#8203;</p>
+<p>le réseau : création, communication inter conteneur etc&#8230;&#8203;</p>
 </li>
 <li>
 <p>la gestion des images et les "insecures registry"</p>
 </li>
 <li>
-<p>docker-compose : ou comment démarrer une stack complète.</p>
+<p>docker-compose ou comment démarrer une stack complète.</p>
 </li>
 <li>
 <p>docker-swarm : orchestrateur</p>
@@ -823,15 +829,20 @@ docker rm -f nginx</code></pre>
 </div>
 <div class="sect2">
 <h3 id="_mais_cest_quoi_kubernetes">Mais c&#8217;est quoi Kubernetes?</h3>
+<div class="sect3">
+<h4 id="_un_orchestrateur">Un orchestrateur</h4>
 <div class="paragraph">
-<p>On parlera ici rapidement d&#8217;une archi Kubernetes</p>
+<p>Permet de gérer l&#8217;ensemble des conteneurs décrits dans différents "objets".</p>
 </div>
 <div class="paragraph">
-<p>&#8594; Orchestrateur (autres connus : Swarm, Rancher, Mesos, Nomad)</p>
+<p>D&#8217;autres orchestrateurs connus? Swarm, Rancher, Mesos, Nomad</p>
 </div>
 <div class="paragraph">
-<p>&#8594; Un cluster K8S :</p>
+<p>(<em>Mais soyons clair, le grand vainqueur reste Kubernetes</em>)</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_cest_quoi_un_cluster_kubernetes">C&#8217;est quoi un cluster Kubernetes?</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -873,19 +884,39 @@ docker rm -f nginx</code></pre>
 +-----------------------------------------------------------------------------------------+</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>En détails :</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="docker/assets/kubernetes-constructs-concepts-architecture.jpg" alt="kubernetes constructs concepts architecture">
+</div>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre>Master</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Master = Control plane
-Bonne pratique : pas de travaux sur le master (on laisse faire les noeuds pour ça)
-kube-apiserver : frontend du control plane, expose les api REST et parle avec du JSON (via des fichier manifest)
-Cluster store (KV) (etcd): persistent storage pour l&#8217;état et la config du cluster. Utilise etcd
-kube-controller-manager : le controller des controller (gere les noeuds, les endpoints, les namespace etc&#8230;&#8203;), il gere les evenements/changement et aide à maintenir dans l&#8217;état désiré
-kube-scheduler: va ordonnacer le travail et l&#8217;assigner au noeud selon les contraintes et configuration
-tout est gérer via l&#8217;apiserver qui communique avec les autre (KV,Controller,Scheduler)</p>
+<p>Master = Control plane</p>
+</div>
+<div class="paragraph">
+<p>Bonne pratique : pas de travaux sur le master (on laisse faire les noeuds pour ça)</p>
+</div>
+<div class="paragraph">
+<p>kube-apiserver : frontend du control plane, expose les api REST et parle avec du JSON (via des fichier manifest)</p>
+</div>
+<div class="paragraph">
+<p>Cluster store (KV) (etcd): persistent storage pour l&#8217;état et la config du cluster. Utilise etcd</p>
+</div>
+<div class="paragraph">
+<p>kube-controller-manager : le controller des controller (gere les noeuds, les endpoints, les namespace etc&#8230;&#8203;), il gere les evenements/changement et aide à maintenir dans l&#8217;état désiré</p>
+</div>
+<div class="paragraph">
+<p>kube-scheduler: va ordonnacer le travail et l&#8217;assigner au noeud selon les contraintes et configuration</p>
+</div>
+<div class="paragraph">
+<p>tout est gérer via l&#8217;apiserver qui communique avec les autre (KV,Controller,Scheduler)</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -924,6 +955,7 @@ kube-proxy : va gérer toute la partie réseau, assigner une adresse ip pour cha
 <p>Ingress</p>
 </li>
 </ul>
+</div>
 </div>
 </div>
 </div>

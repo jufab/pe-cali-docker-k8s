@@ -8,6 +8,8 @@ Utilisation de l'image nginx.
 
 2) Après authentification, création de l'instance "Create instance"
 
+(__si c'est pas déjà fait__)
+
 3) faire une recherche sur l'entrepôt d'images par défaut de docker
 
 -> https://hub.docker.com/

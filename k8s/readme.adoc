@@ -4,11 +4,15 @@
 
 === Mais c'est quoi Kubernetes?
 
-On parlera ici rapidement d'une archi Kubernetes
+==== Un orchestrateur
 
--> Orchestrateur (autres connus : Swarm, Rancher, Mesos, Nomad)
+Permet de gérer l'ensemble des conteneurs décrits dans différents "objets".
 
--> Un cluster K8S :
+D'autres orchestrateurs connus? Swarm, Rancher, Mesos, Nomad
+
+(__Mais soyons clair, le grand vainqueur reste Kubernetes__)
+
+==== C'est quoi un cluster Kubernetes?
 
 * c'est 1-N master
 * N noeud
@@ -46,15 +50,27 @@ On parlera ici rapidement d'une archi Kubernetes
 
 ----
 
+En détails :
+
+
+
+image::assets/kubernetes-constructs-concepts-architecture.jpg[]
+
 -----------------
 Master
 -----------------
 Master = Control plane
+
 Bonne pratique : pas de travaux sur le master (on laisse faire les noeuds pour ça)
+
 kube-apiserver : frontend du control plane, expose les api REST et parle avec du JSON (via des fichier manifest)
+
 Cluster store (KV) (etcd): persistent storage pour l'état et la config du cluster. Utilise etcd
+
 kube-controller-manager : le controller des controller (gere les noeuds, les endpoints, les namespace etc...), il gere les evenements/changement et aide à maintenir dans l'état désiré
+
 kube-scheduler: va ordonnacer le travail et l'assigner au noeud selon les contraintes et configuration
+
 tout est gérer via l'apiserver qui communique avec les autre (KV,Controller,Scheduler)
 
 ------------------

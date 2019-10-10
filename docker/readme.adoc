@@ -21,9 +21,10 @@ include::lab-docker-2.adoc[]
 
 _Mais que vous pourriez par la suite approfondir_
 
+* le push d'une image vers un entrepôt
 * Le principe des couches (Layer) au sein de docker qui constitue une image
 * Le build d'image multilayer
-* le réseau : création, communication inter container etc...
+* le réseau : création, communication inter conteneur etc...
 * la gestion des images et les "insecures registry"
-* docker-compose : ou comment démarrer une stack complète.
+* docker-compose ou comment démarrer une stack complète.
 * docker-swarm : orchestrateur

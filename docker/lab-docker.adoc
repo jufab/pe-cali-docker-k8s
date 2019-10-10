@@ -1,4 +1,4 @@
-=== Créer notre première image et container
+=== Créer notre première image et conteneur
 
 Utilisation du projet "whoami" dans le dossier "docker".
 
@@ -8,7 +8,7 @@ Utilisation du projet "whoami" dans le dossier "docker".
 
 2) Après authentification, création de l'instance "Create instance"
 
-3) lancer la comande dans le terminal
+3) lancer la commande dans le terminal
 
 [source,console]
 ----
@@ -80,6 +80,6 @@ Nous avons appris des commandes docker qui servent à
 * Afficher la version docker
 * Créer et tagguer une image docker
 * Afficher la liste des images présentes sur la machine
-* Instancier un container
-* Lister les container en cours d'exécution
-* Inspecter un container en cours d'exécution
+* Instancier un conteneur
+* Lister les conteneurs en cours d'exécution
+* Inspecter un conteneur en cours d'exécution
