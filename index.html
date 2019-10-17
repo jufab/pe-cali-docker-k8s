@@ -846,10 +846,10 @@ docker rm -f nginx</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p>c&#8217;est 1-N master</p>
+<p>c&#8217;est N master</p>
 </li>
 <li>
-<p>N noeud</p>
+<p>N noeud/serviteur/workeur</p>
 </li>
 </ul>
 </div>
@@ -892,48 +892,57 @@ docker rm -f nginx</code></pre>
 <img src="docker/assets/kubernetes-constructs-concepts-architecture.jpg" alt="kubernetes constructs concepts architecture">
 </div>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre>Master</pre>
-</div>
-</div>
+<div class="sect4">
+<h5 id="_master">Master</h5>
 <div class="paragraph">
 <p>Master = Control plane</p>
 </div>
 <div class="paragraph">
-<p>Bonne pratique : pas de travaux sur le master (on laisse faire les noeuds pour ça)</p>
+<p>Il est composé de  :</p>
 </div>
 <div class="paragraph">
-<p>kube-apiserver : frontend du control plane, expose les api REST et parle avec du JSON (via des fichier manifest)</p>
+<p><em>kube-apiserver</em> : frontend du control plane, expose les api REST et parle avec du JSON (via des fichiers manifest) ou du YAML</p>
 </div>
 <div class="paragraph">
-<p>Cluster store (KV) (etcd): persistent storage pour l&#8217;état et la config du cluster. Utilise etcd</p>
+<p><em>Cluster store (KV) (alias etcd)</em> : persistent storage pour l&#8217;état et la config du cluster. Utilise etcd</p>
 </div>
 <div class="paragraph">
-<p>kube-controller-manager : le controller des controller (gere les noeuds, les endpoints, les namespace etc&#8230;&#8203;), il gere les evenements/changement et aide à maintenir dans l&#8217;état désiré</p>
+<p><em>kube-controller-manage</em> : le controller des controllers (gère les noeuds, les endpoints, les namespaces etc&#8230;&#8203;), il gère les evenements/changement et aide à maintenir dans l&#8217;état désiré</p>
 </div>
 <div class="paragraph">
-<p>kube-scheduler: va ordonnacer le travail et l&#8217;assigner au noeud selon les contraintes et configuration</p>
+<p><em>kube-scheduler</em> : va ordonnacer le travail et l&#8217;assigner au noeud selon les contraintes et configuration</p>
 </div>
 <div class="paragraph">
-<p>tout est gérer via l&#8217;apiserver qui communique avec les autre (KV,Controller,Scheduler)</p>
+<p>tout est géré via l&#8217;apiserver qui communique avec les autres composant (KV,Controller,Scheduler)</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre>Node</pre>
 </div>
+<div class="sect4">
+<h5 id="_noeudworkerminion">Noeud/Worker/Minion</h5>
+<div class="paragraph">
+<p>Il contient :</p>
 </div>
 <div class="paragraph">
-<p>Node = Worker = Minion
-Il contient Kubelet : l&#8217;agent . Il enregistre le noeud avec le cluster et observe l&#8217;apiserver et communique avec le master
-Le kubelet ne gere pas l&#8217;état du contenu : il renvoie l&#8217;information au master qui prendra la décision
-Il exposes les endpoints sur le port :10255 &#8658; il expose par exemple 3 endpoints /spec /healthz /pods (il y en a d&#8217;autre)
-Il contient le container engine : qui permet de réaliser le pull des images, démarrer et arreter les containers. Le Container Engine est pluggé avec Docker mais peut être plugger à d&#8217;autre (rkt, containerd, podman etc..)
-kube-proxy : va gérer toute la partie réseau, assigner une adresse ip pour chaque pod, gérer la partie loadbalancing etc..</p>
+<p><em>Kubelet</em> : l&#8217;agent .</p>
 </div>
 <div class="paragraph">
-<p>2) Pratiques</p>
+<p>Il enregistre le noeud dans le cluster, observe l&#8217;apiserver et communique avec le master</p>
 </div>
+<div class="paragraph">
+<p>Le kubelet ne gère pas l&#8217;état du contenu : il renvoie l&#8217;information au master qui prendra la décision</p>
+</div>
+<div class="paragraph">
+<p>Il exposes les endpoints sur le port :10255 &#8658; il expose par exemple 3 endpoints /spec /healthz /pods (il y en a d&#8217;autre)</p>
+</div>
+<div class="paragraph">
+<p>Il contient le container engine : qui permet de réaliser le pull des images, démarrer et arreter les containers. Le Container Engine est pluggé avec Docker mais peut être plugger à d&#8217;autre (rkt, containerd, podman etc..)</p>
+</div>
+<div class="paragraph">
+<p>kube-proxy : va gérer toute la partie réseau, assigner une adresse ip pour chaque pod, gérer la partie loadbalancing etc..</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_pratiques">Pratiques</h4>
 <div class="paragraph">
 <p>kubectl apply -f <a href="https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta4/aio/deploy/recommended.yaml" class="bare">https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta4/aio/deploy/recommended.yaml</a></p>
 </div>

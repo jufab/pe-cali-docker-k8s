@@ -14,8 +14,8 @@ D'autres orchestrateurs connus? Swarm, Rancher, Mesos, Nomad
 
 ==== C'est quoi un cluster Kubernetes?
 
-* c'est 1-N master
-* N noeud
+* c'est N master
+* N noeud/serviteur/workeur
 
 
 [ditaa]
@@ -52,39 +52,42 @@ D'autres orchestrateurs connus? Swarm, Rancher, Mesos, Nomad
 
 En détails :
 
-
-
 image::assets/kubernetes-constructs-concepts-architecture.jpg[]
 
------------------
-Master
------------------
+===== Master
+
 Master = Control plane
 
-Bonne pratique : pas de travaux sur le master (on laisse faire les noeuds pour ça)
+Il est composé de  :
 
-kube-apiserver : frontend du control plane, expose les api REST et parle avec du JSON (via des fichier manifest)
+__kube-apiserver__ : frontend du control plane, expose les api REST et parle avec du JSON (via des fichiers manifest) ou du YAML
 
-Cluster store (KV) (etcd): persistent storage pour l'état et la config du cluster. Utilise etcd
+__Cluster store (KV) (alias etcd)__ : persistent storage pour l'état et la config du cluster. Utilise etcd
 
-kube-controller-manager : le controller des controller (gere les noeuds, les endpoints, les namespace etc...), il gere les evenements/changement et aide à maintenir dans l'état désiré
+__kube-controller-manage__ : le controller des controllers (gère les noeuds, les endpoints, les namespaces etc...), il gère les evenements/changement et aide à maintenir dans l'état désiré
 
-kube-scheduler: va ordonnacer le travail et l'assigner au noeud selon les contraintes et configuration
+__kube-scheduler__ : va ordonnacer le travail et l'assigner au noeud selon les contraintes et configuration
 
-tout est gérer via l'apiserver qui communique avec les autre (KV,Controller,Scheduler)
+tout est géré via l'apiserver qui communique avec les autres composant (KV,Controller,Scheduler)
 
-------------------
-Node
-------------------
-Node = Worker = Minion
-Il contient Kubelet : l'agent . Il enregistre le noeud avec le cluster et observe l'apiserver et communique avec le master
-Le kubelet ne gere pas l'état du contenu : il renvoie l'information au master qui prendra la décision
+===== Noeud/Worker/Minion
+
+Il contient : 
+
+__Kubelet__ : l'agent . 
+
+Il enregistre le noeud dans le cluster, observe l'apiserver et communique avec le master
+
+Le kubelet ne gère pas l'état du contenu : il renvoie l'information au master qui prendra la décision
+
 Il exposes les endpoints sur le port :10255 => il expose par exemple 3 endpoints /spec /healthz /pods (il y en a d'autre)
+
 Il contient le container engine : qui permet de réaliser le pull des images, démarrer et arreter les containers. Le Container Engine est pluggé avec Docker mais peut être plugger à d'autre (rkt, containerd, podman etc..)
+
 kube-proxy : va gérer toute la partie réseau, assigner une adresse ip pour chaque pod, gérer la partie loadbalancing etc..
 
 
-2) Pratiques
+==== Pratiques
 
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta4/aio/deploy/recommended.yaml
 
