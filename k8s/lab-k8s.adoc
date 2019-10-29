@@ -8,4 +8,6 @@ Noter bien durant l'installation de l'instruction 1 (kubeadm init) la commande s
 
 kubeadm join XXX.XXX.XXX.XXX:XXXX --token xxxxxxxxx --discovery-token-ca-cert-hash xxxxxxxxxxx
 
-Sur l'instance du précédant lab, appliquer la commande "kubeadm join..." sur la deuxieme instance ()
+Appliquer l'instruction 2 ()
+
+Sur l'instance du précédant lab, appliquer la commande "kubeadm join..."
