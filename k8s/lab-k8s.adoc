@@ -1,13 +1,31 @@
 ==== Préparation du lab
 
-Dans le cas de l'utilisation du lien https://labs.play-with-k8s.com/
+On continue sur https://labs.play-with-k8s.com/
 
-Ajouter une instance et démarrer l'instruction 1 et 2 => Bien conserver l'instance du lab docker
+On ajoute une instance et on démarre l'instruction 1
 
-Noter bien durant l'installation de l'instruction 1 (kubeadm init) la commande suivante type elle vous sera utile:
+[source,console]
+----
+kubeadm init --apiserver-advertise-address $(hostname -i)
+----
 
+
+Noter bien durant l'installation de l'instruction 1 la commande suivante type qui vous sera donné :
+
+[source,console]
+----
 kubeadm join XXX.XXX.XXX.XXX:XXXX --token xxxxxxxxx --discovery-token-ca-cert-hash xxxxxxxxxxx
+----
 
-Appliquer l'instruction 2 ()
 
-Sur l'instance du précédant lab, appliquer la commande "kubeadm join..."
+et on démarre l'instruction 2 
+
+
+[source,console]
+---- 
+kubectl apply -n kube-system -f \
+    "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 |tr -d '\n')"
+----
+
+
+Sur l'instance du précédant lab, appliquer la commande "kubeadm join..." préciseusement conservée.

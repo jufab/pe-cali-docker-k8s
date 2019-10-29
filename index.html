@@ -584,19 +584,38 @@ Il exposes les endpoints sur le port :10255 &#8658; il expose par exemple 3 endp
 <div class="sect3">
 <h4 id="_préparation_du_lab">Préparation du lab</h4>
 <div class="paragraph">
-<p>Dans le cas de l&#8217;utilisation du lien <a href="https://labs.play-with-k8s.com/" class="bare">https://labs.play-with-k8s.com/</a></p>
+<p>On continue sur <a href="https://labs.play-with-k8s.com/" class="bare">https://labs.play-with-k8s.com/</a></p>
 </div>
 <div class="paragraph">
-<p>Se connecter, ajouter une instance et démarrer l&#8217;instruction 1 et 2.</p>
+<p>On ajoute une instance et on démarre l&#8217;instruction 1</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">kubeadm init --apiserver-advertise-address $(hostname -i)</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>Noter bien durant l&#8217;installation de l&#8217;instruction 1 (kubeadm init) la commande suivante type elle vous sera utile:</p>
+<p>Noter bien durant l&#8217;installation de l&#8217;instruction 1 la commande suivante type qui vous sera donné :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">kubeadm join XXX.XXX.XXX.XXX:XXXX --token xxxxxxxxx --discovery-token-ca-cert-hash xxxxxxxxxxx</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>kubeadm join XXX.XXX.XXX.XXX:XXXX --token xxxxxxxxx --discovery-token-ca-cert-hash xxxxxxxxxxx</p>
+<p>et  on démarre l&#8217;instruction 2</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">kubectl apply -n kube-system -f \
+    "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 |tr -d '\n')"</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>Créer une deuxième instance et appliquer la commande "kubeadm join&#8230;&#8203;" sur la deuxieme instance ()</p>
+<p>Appliquer l&#8217;instruction 2 ()</p>
+</div>
+<div class="paragraph">
+<p>Sur l&#8217;instance du précédant lab, appliquer la commande "kubeadm join&#8230;&#8203;"</p>
 </div>
 </div>
 <div class="sect3">
