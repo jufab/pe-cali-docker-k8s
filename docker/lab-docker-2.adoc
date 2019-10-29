@@ -4,7 +4,7 @@ Utilisation de l'image nginx.
 
 1) Lancer le docker lab si pas déjà fait
 
--> [#lab-docker]#Voir le lab Docker#
+-> <<_pour_le_lab,Voir le lab Docker>>
 
 2) Après authentification, création de l'instance "Create instance"
 

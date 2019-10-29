@@ -1,5 +1,33 @@
-==  Annnexe
-source :  
+== Annnexe
+=== source   
 
 * https://www.pluralsight.com/courses/getting-started-kubernetes
 * https://kubernetes.io/docs/tutorials/kubernetes-basics/
+
+
+=== Nom court des ressources Kubernetes
+
+[%header,cols=2*]
+|===
+|Type de ressource 
+|Nom court 
+
+|Pod
+|po
+
+|service
+|svc
+
+|deployment
+|deploy
+
+|daemonset
+|ds
+
+|replicaset
+|rs
+
+|replicationcontroller
+|rc
+
+|===

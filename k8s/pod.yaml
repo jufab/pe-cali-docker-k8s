@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: hello
+  name: whoami
   labels:
-    name: hello
+    name: whoami
 spec:
   containers:
-  - name: hello
-    image: jufab/whoami
+  - name: whoami
+    image: whoami:latest
     imagePullPolicy: IfNotPresent
     ports:
       - containerPort: 80
-        name: hello-port
+        name: whoami-port

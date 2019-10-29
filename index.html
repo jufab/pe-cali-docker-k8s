@@ -58,6 +58,7 @@ table {
 }
 
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
@@ -87,7 +88,12 @@ table {
 <li><a href="#_ce_qui_ne_sera_pas_vu_dans_ce_lab_2">Ce qui ne sera pas vu dans ce lab</a></li>
 </ul>
 </li>
-<li><a href="#_annnexe">Annnexe</a></li>
+<li><a href="#_annnexe">Annnexe</a>
+<ul class="sectlevel2">
+<li><a href="#_source">source</a></li>
+<li><a href="#_nom_court_des_ressources_kubernetes">Nom court des ressources Kubernetes</a></li>
+</ul>
+</li>
 <li><a href="#_astuce">Astuce</a>
 <ul class="sectlevel2">
 <li><a href="#_ecrire_dans_un_fichier_en_ligne_de_commande">Ecrire dans un fichier en ligne de commande</a></li>
@@ -182,7 +188,7 @@ table {
 <p>1) Lancer le docker lab</p>
 </div>
 <div class="paragraph">
-<p>&#8594; <span id="pour_le_lab">Voir le lab Docker</span></p>
+<p>&#8594; <a href="#_pour_le_lab">Voir le lab Docker</a></p>
 </div>
 <div class="paragraph">
 <p>2) Après authentification, création de l&#8217;instance "Create instance"</p>
@@ -199,13 +205,36 @@ table {
 <p>pour s&#8217;assurer que docker est bien présent</p>
 </div>
 <div class="paragraph">
-<p>4) copier le contenu du fichier index.js et l&#8217;intégrer dans le cluster via le terminal (voir astuce pour écrire un fichier)</p>
+<p>4) copier le contenu du fichier index.js et l&#8217;intégrer dans le cluster via le terminal</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">cat &gt; index.js &lt;&lt; eof
+var http = require('http');
+var os = require('os');
+http.createServer(function(req,res){
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.write('Hostname : ' + os.hostname());
+    res.end();
+}).listen(80);
+eof</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>(<em>Description du contenu du fichier</em>)</p>
 </div>
 <div class="paragraph">
 <p>5) copier le contenu du fichier Dockerfile et l&#8217;intégrer dans le cluster via le terminal</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">cat &gt; Dockerfile &lt;&lt; eof
+FROM node:alpine
+COPY index.js index.js
+CMD [ "node", "index.js" ]
+EXPOSE 80
+eof</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>(<em>Description du contenu du fichier</em>)</p>
@@ -306,7 +335,7 @@ table {
 <p>1) Lancer le docker lab si pas déjà fait</p>
 </div>
 <div class="paragraph">
-<p>&#8594; <span id="lab-docker">Voir le lab Docker</span></p>
+<p>&#8594; <a href="#_pour_le_lab">Voir le lab Docker</a></p>
 </div>
 <div class="paragraph">
 <p>2) Après authentification, création de l&#8217;instance "Create instance"</p>
@@ -595,7 +624,7 @@ Il exposes les endpoints sur le port :10255 &#8658; il expose par exemple 3 endp
 </div>
 </div>
 <div class="paragraph">
-<p>Noter bien durant l&#8217;installation de l&#8217;instruction 1 la commande suivante type qui vous sera donné :</p>
+<p>Notez bien durant l&#8217;initialisation de l&#8217;instruction 1, la commande suivante type qui vous sera donnée :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -614,6 +643,17 @@ Il exposes les endpoints sur le port :10255 &#8658; il expose par exemple 3 endp
 <div class="paragraph">
 <p>Sur l&#8217;instance du précédant lab, appliquer la commande "kubeadm join&#8230;&#8203;" préciseusement conservée.</p>
 </div>
+<div class="paragraph">
+<p>Pour vérifier que tout va bien on vérifie qu&#8217;il existe 2 noeuds dans notre cluster dont 1 master via :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">kubectl get nodes</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>SI la réponse est : <em>The connection to the server localhost:8080 was refused - did you specify the right host or port?</em> c&#8217;est que vous n&#8217;êtes pas sur le noeud maître. Retenter la commande sur le 2ème noeud.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_pod">Pod</h4>
@@ -628,7 +668,40 @@ Il exposes les endpoints sur le port :10255 &#8658; il expose par exemple 3 endp
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-console" data-lang="console">kubectl run whoami --image=jufab/whoami:latest --port=80 --generator=run-pod/v1</code></pre>
+<pre class="highlight"><code class="language-console" data-lang="console">kubectl run whoami --image=whoami:latest --port=80 --generator=run-pod/v1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>On vérifie via la commande</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">kubectl get po</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>(<em>Description de la commande</em>)</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<em>po</em> est un nom court de pod. on peut écrire soit <em>po</em> soit <em>pod</em>.
+<a href="#_nom_court_des_ressources_kubernetes">nom court des ressources Kubernetes</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>On doit obtenir</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">NAME      READY     STATUS    RESTARTS   AGE
+whoami    1/1       Running   0          9m</code></pre>
 </div>
 </div>
 </div>
@@ -650,9 +723,8 @@ Il exposes les endpoints sur le port :10255 &#8658; il expose par exemple 3 endp
 <div class="sect1">
 <h2 id="_annnexe">Annnexe</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>source :</p>
-</div>
+<div class="sect2">
+<h3 id="_source">source</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -662,6 +734,48 @@ Il exposes les endpoints sur le port :10255 &#8658; il expose par exemple 3 endp
 <p><a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/" class="bare">https://kubernetes.io/docs/tutorials/kubernetes-basics/</a></p>
 </li>
 </ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_nom_court_des_ressources_kubernetes">Nom court des ressources Kubernetes</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Type de ressource</th>
+<th class="tableblock halign-left valign-top">Nom court</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pod</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">po</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">service</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">svc</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">deployment</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">deploy</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">daemonset</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ds</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">replicaset</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rs</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">replicationcontroller</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rc</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -689,7 +803,7 @@ Il exposes les endpoints sur le port :10255 &#8658; il expose par exemple 3 endp
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-10-29 10:43:15 +0100
+Last updated 2019-10-29 23:33:50 +0100
 </div>
 </div>
 </body>

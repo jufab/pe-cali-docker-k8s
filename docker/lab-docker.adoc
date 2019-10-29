@@ -4,7 +4,7 @@ Utilisation du projet "whoami" dans le dossier "docker".
 
 1) Lancer le docker lab
 
--> [#pour_le_lab]#Voir le lab Docker#
+-> <<_pour_le_lab,Voir le lab Docker>>
 
 2) Après authentification, création de l'instance "Create instance"
 
@@ -17,12 +17,37 @@ docker version
 
 pour s'assurer que docker est bien présent
 
-4) copier le contenu du fichier index.js et l'intégrer dans le cluster via le terminal (voir astuce pour écrire un fichier)
+4) copier le contenu du fichier index.js et l'intégrer dans le cluster via le terminal
+
+[source,console]
+----
+cat > index.js << eof
+var http = require('http');
+var os = require('os');
+http.createServer(function(req,res){
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.write('Hostname : ' + os.hostname());
+    res.end();
+}).listen(80);
+eof
+----
+
 
 (_Description du contenu du fichier_)
 
 
 5) copier le contenu du fichier Dockerfile et l'intégrer dans le cluster via le terminal
+
+[source,console]
+----
+cat > Dockerfile << eof
+FROM node:alpine
+COPY index.js index.js
+CMD [ "node", "index.js" ]
+EXPOSE 80
+eof
+----
+
 
 (_Description du contenu du fichier_)
 

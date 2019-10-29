@@ -4,9 +4,41 @@ Démarrons par le plus petit élément à savoir le pod.
 
 Le pod est constitué de 1 à n conteneur : dans la pratique on limite à 1 conteneur par pod.
 
-Création du premier pod : 
+Création du premier pod (en version Ligne de commande): 
 
 [source,console]
 ----
-kubectl run whoami --image=jufab/whoami:latest --port=80 --generator=run-pod/v1
+kubectl run whoami --image=whoami:latest --port=80 --generator=run-pod/v1
 ----
+
+
+On vérifie via la commande
+
+[source,console]
+----
+kubectl get po
+----
+
+(_Description de la commande_)
+
+TIP: _po_ est un nom court de pod. on peut écrire soit _po_ soit _pod_. 
+<<_nom_court_des_ressources_kubernetes,nom court des ressources Kubernetes>>
+
+On doit obtenir
+
+[source,console]
+----
+NAME      READY     STATUS    RESTARTS   AGE
+whoami    1/1       Running   0          9m
+----
+
+
+Réalisons la même commande mais via un fichier yaml.
+
+On supprime d'abord le pod fraichement créé.
+
+[source,console]
+----
+kubectl delete po whoami
+----
+

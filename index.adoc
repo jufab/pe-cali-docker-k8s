@@ -3,6 +3,7 @@
 :imagesdir: assets/
 :stylesdir: css/
 :stylesheet: ubuntu.css
+:icons: font
 :showtitle:
 
 == Pré-requis

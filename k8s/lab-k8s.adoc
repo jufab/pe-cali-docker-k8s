@@ -10,7 +10,7 @@ kubeadm init --apiserver-advertise-address $(hostname -i)
 ----
 
 
-Noter bien durant l'installation de l'instruction 1 la commande suivante type qui vous sera donné :
+Notez bien durant l'initialisation de l'instruction 1, la commande suivante type qui vous sera donnée :
 
 [source,console]
 ----
@@ -29,3 +29,13 @@ kubectl apply -n kube-system -f \
 
 
 Sur l'instance du précédant lab, appliquer la commande "kubeadm join..." préciseusement conservée.
+
+Pour vérifier que tout va bien on vérifie qu'il existe 2 noeuds dans notre cluster dont 1 master via : 
+
+[source,console]
+---- 
+kubectl get nodes
+----
+
+
+SI la réponse est : _The connection to the server localhost:8080 was refused - did you specify the right host or port?_ c'est que vous n'êtes pas sur le noeud maître. Retenter la commande sur le 2ème noeud.
