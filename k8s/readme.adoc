@@ -56,35 +56,50 @@ image::kubernetes-constructs-concepts-architecture.jpg[]
 
 ===== Master
 
-Master = Control plane
+link:https://kubernetes.io/fr/docs/concepts/overview/components/#composants-master[_Master_ ou Control plane]
 
 Il est composé de  :
 
-__kube-apiserver__ : frontend du control plane, expose les api REST et parle avec du JSON (via des fichiers manifest) ou du YAML
+---
 
-__Cluster store (KV) (alias etcd)__ : persistent storage pour l'état et la config du cluster. Utilise etcd
+_kube-apiserver_ : frontend du control plane, expose les api REST et travaille avec le format avec du JSON (via des fichiers manifest) ou du YAML
 
-__kube-controller-manage__ : le controller des controllers (gère les noeuds, les endpoints, les namespaces etc...), il gère les evenements/changement et aide à maintenir dans l'état désiré
+---
+
+__Cluster store (KV) (alias etcd)__ : persistent storage pour l'état et la config du cluster. Utilise link:https://github.com/etcd-io/etcd[etcd]
+
+---
+
+__kube-controller-manager__ : le controller des controllers (gère les noeuds, les endpoints, les namespaces etc...), il gère les evenements/changement et aide à maintenir dans l'état désiré
+
+---
 
 __kube-scheduler__ : va ordonnacer le travail et l'assigner au noeud selon les contraintes et configuration
+
+---
 
 tout est géré via l'apiserver qui communique avec les autres composant (KV,Controller,Scheduler)
 
 ===== Noeud/Worker/Minion
 
+link:https://kubernetes.io/fr/docs/concepts/overview/components/#composants-de-n%c5%93ud[Noeud]
+
 Il contient : 
 
-__Kubelet__ : l'agent . 
+---
 
-Il enregistre le noeud dans le cluster, observe l'apiserver et communique avec le master
-
-Le kubelet ne gère pas l'état du contenu : il renvoie l'information au master qui prendra la décision
-
+__Kubelet__ : l'agent. Il enregistre le noeud dans le cluster, observe l'apiserver et communique avec le master.
+Le kubelet ne gère pas l'état du contenu : il renvoie l'information au master qui prendra la décision.
 Il exposes les endpoints sur le port :10255 => il expose par exemple 3 endpoints /spec /healthz /pods (il y en a d'autre)
 
-Il contient le container engine : qui permet de réaliser le pull des images, démarrer et arreter les containers. Le Container Engine est pluggé avec Docker mais peut être plugger à d'autre (rkt, containerd, podman etc..)
+---
 
-kube-proxy : va gérer toute la partie réseau, assigner une adresse ip pour chaque pod, gérer la partie loadbalancing etc..
+__container engine__ : il permet de réaliser le pull des images, démarrer et arreter les containers. Le Container Engine est pluggé en régle générale avec Docker mais peut être pluggé à d'autres (rktlet, containerd, cri-o, etc..) compatible avec Kubernetes CRI (Container Runtime Interface)
+
+---
+
+kube-proxy : va gérer toute la partie réseau, assigner une adresse ip pour chaque pod, gérer la partie communication entre les pods etc..
+
 
 ==== Liste des ressources de Kubernetes
 
@@ -95,9 +110,11 @@ Plus d'infos sur les icônes : https://github.com/kubernetes/community/tree/mast
 
 === Lab
 
-Pour communiquer avec le cluster kubernetes, nous utilisons la CLI "kubectl" qui permet de dialoguer.
+Pour communiquer avec le cluster kubernetes, nous utilisons la CLI "kubectl" qui permet de dialoguer avec le cluster.
 
 Il est possible soit d'utiliser des actions de type "run" ou "create", soit d'appliquer directement des fichiers descripteurs de type "yaml" ou "json".
+
+Nous allons travailler dans ce lab, la majorité du temps, via des fichiers yaml. 
 
 include::lab-k8s.adoc[]
 

@@ -9,8 +9,6 @@
 
 Un compte github (pour le lab K8s) ou un compte docker (pour le lab K8s et Docker)
 
-include::liens-utiles.adoc[]
-
 == Pour le lab
 
 Plusieurs possibilités pour tester
@@ -18,16 +16,20 @@ Plusieurs possibilités pour tester
 [#lab-docker]
 === Pour Docker
 
-* https://labs.play-with-docker.com/
-* https://labs.play-with-k8s.com/
+* https://labs.play-with-docker.com/ (nécessite un compte "docker")
+* https://labs.play-with-k8s.com/ (nécessite un compte "docker" ou github)
 
 === Pour Kubernetes
 
-* https://labs.play-with-k8s.com/
+* https://labs.play-with-k8s.com/ (nécessite un compte "docker" ou github)
 * https://kubernetes.io/docs/tutorials/kubernetes-basics/
+
+On favorisera l'utilisation du lien https://labs.play-with-k8s.com/ pour tout faire au même endroit.
 
 include::docker/readme.adoc[]
 
 include::k8s/readme.adoc[]
+
+include::annexe.adoc[]
 
 include::astuce.adoc[]

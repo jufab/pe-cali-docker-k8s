@@ -4,7 +4,7 @@ Utilisation du projet "whoami" dans le dossier "docker".
 
 1) Lancer le docker lab
 
--> [#lab-docker]#Voir le lab Docker#
+-> [#pour_le_lab]#Voir le lab Docker#
 
 2) Après authentification, création de l'instance "Create instance"
 

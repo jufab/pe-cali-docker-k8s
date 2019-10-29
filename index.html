@@ -31,8 +31,8 @@
 /* Text styles */
 body{font-family: "Ubuntu",sans-serif;}
 
-h1,h2{color:var(--primarycolor) !important;font-family:"Ubuntu",sans-serif;}
-h3,h4,h5,h6{color:var(--secondarycolor);font-family: "Ubuntu",sans-serif;}
+h1,h2,h5{color:var(--primarycolor) !important;font-family:"Ubuntu",sans-serif;}
+h3,h4,h6{color:var(--secondarycolor);font-family: "Ubuntu",sans-serif;}
 .title{color:(--primarycolor) !important;font-family:"Ubuntu",sans-serif;font-style: normal; font-weight: normal;}
 p{font-family: "Ubuntu",sans-serif ! important}
 #toc.toc2 a:link{color:white;}
@@ -66,7 +66,6 @@ table {
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_pré_requis">Pré-requis</a></li>
-<li><a href="#_liens_utiles">liens utiles</a></li>
 <li><a href="#_pour_le_lab">Pour le lab</a>
 <ul class="sectlevel2">
 <li><a href="#lab-docker">Pour Docker</a></li>
@@ -88,6 +87,7 @@ table {
 <li><a href="#_ce_qui_ne_sera_pas_vu_dans_ce_lab_2">Ce qui ne sera pas vu dans ce lab</a></li>
 </ul>
 </li>
+<li><a href="#_annnexe">Annnexe</a></li>
 <li><a href="#_astuce">Astuce</a>
 <ul class="sectlevel2">
 <li><a href="#_ecrire_dans_un_fichier_en_ligne_de_commande">Ecrire dans un fichier en ligne de commande</a></li>
@@ -107,24 +107,6 @@ table {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_liens_utiles">liens utiles</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>source :</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://www.pluralsight.com/courses/getting-started-kubernetes" class="bare">https://www.pluralsight.com/courses/getting-started-kubernetes</a></p>
-</li>
-<li>
-<p><a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/" class="bare">https://kubernetes.io/docs/tutorials/kubernetes-basics/</a></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
 <h2 id="_pour_le_lab">Pour le lab</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -135,10 +117,10 @@ table {
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://labs.play-with-docker.com/" class="bare">https://labs.play-with-docker.com/</a></p>
+<p><a href="https://labs.play-with-docker.com/" class="bare">https://labs.play-with-docker.com/</a> (nécessite un compte "docker")</p>
 </li>
 <li>
-<p><a href="https://labs.play-with-k8s.com/" class="bare">https://labs.play-with-k8s.com/</a></p>
+<p><a href="https://labs.play-with-k8s.com/" class="bare">https://labs.play-with-k8s.com/</a> (nécessite un compte "docker" ou github)</p>
 </li>
 </ul>
 </div>
@@ -148,12 +130,15 @@ table {
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://labs.play-with-k8s.com/" class="bare">https://labs.play-with-k8s.com/</a></p>
+<p><a href="https://labs.play-with-k8s.com/" class="bare">https://labs.play-with-k8s.com/</a> (nécessite un compte "docker" ou github)</p>
 </li>
 <li>
 <p><a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/" class="bare">https://kubernetes.io/docs/tutorials/kubernetes-basics/</a></p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>On favorisera l&#8217;utilisation du lien <a href="https://labs.play-with-k8s.com/" class="bare">https://labs.play-with-k8s.com/</a> pour tout faire au même endroit.</p>
 </div>
 </div>
 </div>
@@ -197,7 +182,7 @@ table {
 <p>1) Lancer le docker lab</p>
 </div>
 <div class="paragraph">
-<p>&#8594; <span id="lab-docker">Voir le lab Docker</span></p>
+<p>&#8594; <span id="pour_le_lab">Voir le lab Docker</span></p>
 </div>
 <div class="paragraph">
 <p>2) Après authentification, création de l&#8217;instance "Create instance"</p>
@@ -523,23 +508,28 @@ docker rm -f nginx</code></pre>
 <div class="sect4">
 <h5 id="_master">Master</h5>
 <div class="paragraph">
-<p>Master = Control plane</p>
+<p><a href="https://kubernetes.io/fr/docs/concepts/overview/components/#composants-master"><em>Master</em> ou Control plane</a></p>
 </div>
 <div class="paragraph">
 <p>Il est composé de  :</p>
 </div>
+<hr>
 <div class="paragraph">
-<p><em>kube-apiserver</em> : frontend du control plane, expose les api REST et parle avec du JSON (via des fichiers manifest) ou du YAML</p>
+<p><em>kube-apiserver</em> : frontend du control plane, expose les api REST et travaille avec le format avec du JSON (via des fichiers manifest) ou du YAML</p>
 </div>
+<hr>
 <div class="paragraph">
-<p><em>Cluster store (KV) (alias etcd)</em> : persistent storage pour l&#8217;état et la config du cluster. Utilise etcd</p>
+<p><em>Cluster store (KV) (alias etcd)</em> : persistent storage pour l&#8217;état et la config du cluster. Utilise <a href="https://github.com/etcd-io/etcd">etcd</a></p>
 </div>
+<hr>
 <div class="paragraph">
-<p><em>kube-controller-manage</em> : le controller des controllers (gère les noeuds, les endpoints, les namespaces etc&#8230;&#8203;), il gère les evenements/changement et aide à maintenir dans l&#8217;état désiré</p>
+<p><em>kube-controller-manager</em> : le controller des controllers (gère les noeuds, les endpoints, les namespaces etc&#8230;&#8203;), il gère les evenements/changement et aide à maintenir dans l&#8217;état désiré</p>
 </div>
+<hr>
 <div class="paragraph">
 <p><em>kube-scheduler</em> : va ordonnacer le travail et l&#8217;assigner au noeud selon les contraintes et configuration</p>
 </div>
+<hr>
 <div class="paragraph">
 <p>tout est géré via l&#8217;apiserver qui communique avec les autres composant (KV,Controller,Scheduler)</p>
 </div>
@@ -547,25 +537,24 @@ docker rm -f nginx</code></pre>
 <div class="sect4">
 <h5 id="_noeudworkerminion">Noeud/Worker/Minion</h5>
 <div class="paragraph">
+<p><a href="https://kubernetes.io/fr/docs/concepts/overview/components/#composants-de-n%c5%93ud">Noeud</a></p>
+</div>
+<div class="paragraph">
 <p>Il contient :</p>
 </div>
+<hr>
 <div class="paragraph">
-<p><em>Kubelet</em> : l&#8217;agent .</p>
+<p><em>Kubelet</em> : l&#8217;agent. Il enregistre le noeud dans le cluster, observe l&#8217;apiserver et communique avec le master.
+Le kubelet ne gère pas l&#8217;état du contenu : il renvoie l&#8217;information au master qui prendra la décision.
+Il exposes les endpoints sur le port :10255 &#8658; il expose par exemple 3 endpoints /spec /healthz /pods (il y en a d&#8217;autre)</p>
 </div>
+<hr>
 <div class="paragraph">
-<p>Il enregistre le noeud dans le cluster, observe l&#8217;apiserver et communique avec le master</p>
+<p><em>container engine</em> : il permet de réaliser le pull des images, démarrer et arreter les containers. Le Container Engine est pluggé en régle générale avec Docker mais peut être pluggé à d&#8217;autres (rktlet, containerd, cri-o, etc..) compatible avec Kubernetes CRI (Container Runtime Interface)</p>
 </div>
+<hr>
 <div class="paragraph">
-<p>Le kubelet ne gère pas l&#8217;état du contenu : il renvoie l&#8217;information au master qui prendra la décision</p>
-</div>
-<div class="paragraph">
-<p>Il exposes les endpoints sur le port :10255 &#8658; il expose par exemple 3 endpoints /spec /healthz /pods (il y en a d&#8217;autre)</p>
-</div>
-<div class="paragraph">
-<p>Il contient le container engine : qui permet de réaliser le pull des images, démarrer et arreter les containers. Le Container Engine est pluggé avec Docker mais peut être plugger à d&#8217;autre (rkt, containerd, podman etc..)</p>
-</div>
-<div class="paragraph">
-<p>kube-proxy : va gérer toute la partie réseau, assigner une adresse ip pour chaque pod, gérer la partie loadbalancing etc..</p>
+<p>kube-proxy : va gérer toute la partie réseau, assigner une adresse ip pour chaque pod, gérer la partie communication entre les pods etc..</p>
 </div>
 </div>
 </div>
@@ -584,37 +573,30 @@ docker rm -f nginx</code></pre>
 <div class="sect2">
 <h3 id="_lab_2">Lab</h3>
 <div class="paragraph">
-<p>Pour communiquer avec le cluster kubernetes, nous utilisons la CLI "kubectl" qui permet de dialoguer.</p>
+<p>Pour communiquer avec le cluster kubernetes, nous utilisons la CLI "kubectl" qui permet de dialoguer avec le cluster.</p>
 </div>
 <div class="paragraph">
 <p>Il est possible soit d&#8217;utiliser des actions de type "run" ou "create", soit d&#8217;appliquer directement des fichiers descripteurs de type "yaml" ou "json".</p>
 </div>
+<div class="paragraph">
+<p>Nous allons travailler dans ce lab, la majorité du temps, via des fichiers yaml.</p>
+</div>
 <div class="sect3">
 <h4 id="_préparation_du_lab">Préparation du lab</h4>
 <div class="paragraph">
-<p>Utilisation des liens :</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://labs.play-with-k8s.com/" class="bare">https://labs.play-with-k8s.com/</a> &#8658; Nécessite un compte github ou docker</p>
-</li>
-<li>
-<p><a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/" class="bare">https://kubernetes.io/docs/tutorials/kubernetes-basics/</a> &#8658; Aucun besoin</p>
-</li>
-</ul>
+<p>Dans le cas de l&#8217;utilisation du lien <a href="https://labs.play-with-k8s.com/" class="bare">https://labs.play-with-k8s.com/</a></p>
 </div>
 <div class="paragraph">
-<p>Se connecter, ajouter deux instance et démarrer l&#8217;instruction 1 et 2 sur une des instances.</p>
+<p>Se connecter, ajouter une instance et démarrer l&#8217;instruction 1 et 2.</p>
 </div>
 <div class="paragraph">
-<p>Noter bien durant l&#8217;installation de l&#8217;instruction 1 la commande type elle vous sera utile:</p>
+<p>Noter bien durant l&#8217;installation de l&#8217;instruction 1 (kubeadm init) la commande suivante type elle vous sera utile:</p>
 </div>
 <div class="paragraph">
 <p>kubeadm join XXX.XXX.XXX.XXX:XXXX --token xxxxxxxxx --discovery-token-ca-cert-hash xxxxxxxxxxx</p>
 </div>
 <div class="paragraph">
-<p>Appliquer la commande "kubeadm join &#8230;&#8203;</p>
+<p>Créer une deuxième instance et appliquer la commande "kubeadm join&#8230;&#8203;" sur la deuxieme instance ()</p>
 </div>
 </div>
 <div class="sect3">
@@ -650,6 +632,24 @@ docker rm -f nginx</code></pre>
 </div>
 </div>
 <div class="sect1">
+<h2 id="_annnexe">Annnexe</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>source :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.pluralsight.com/courses/getting-started-kubernetes" class="bare">https://www.pluralsight.com/courses/getting-started-kubernetes</a></p>
+</li>
+<li>
+<p><a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/" class="bare">https://kubernetes.io/docs/tutorials/kubernetes-basics/</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_astuce">Astuce</h2>
 <div class="sectionbody">
 <div class="sect2">
@@ -673,7 +673,7 @@ docker rm -f nginx</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-10-29 01:17:35 +0100
+Last updated 2019-10-29 10:43:15 +0100
 </div>
 </div>
 </body>
