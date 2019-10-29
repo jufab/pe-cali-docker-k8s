@@ -11,7 +11,9 @@ video::caXHwYC3tq8[youtube]
 
 Rappel : 
 
-image::assets/docker-structure.jpg[]
+image::docker-structure.jpg[]
+
+=== Lab
 
 include::lab-docker.adoc[]
 

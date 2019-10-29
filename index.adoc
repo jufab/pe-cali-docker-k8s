@@ -1,6 +1,8 @@
 = Coding Lab - Docker - Kubernetes
 :toc: left
-:imagesdir: docker/
+:imagesdir: assets/
+:stylesdir: css/
+:stylesheet: ubuntu.css
 :showtitle:
 
 == Pré-requis

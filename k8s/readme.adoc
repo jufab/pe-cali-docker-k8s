@@ -52,7 +52,7 @@ D'autres orchestrateurs connus? Swarm, Rancher, Mesos, Nomad
 
 En détails :
 
-image::assets/kubernetes-constructs-concepts-architecture.jpg[]
+image::kubernetes-constructs-concepts-architecture.jpg[]
 
 ===== Master
 
@@ -86,15 +86,26 @@ Il contient le container engine : qui permet de réaliser le pull des images, d�
 
 kube-proxy : va gérer toute la partie réseau, assigner une adresse ip pour chaque pod, gérer la partie loadbalancing etc..
 
+==== Liste des ressources de Kubernetes
 
-==== Pratiques
-
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta4/aio/deploy/recommended.yaml
+image::ressources-map.png[]
 
 
-- Pod
-- ConfigMap
-- Service
-- Deployment
-- Ingress
+Plus d'infos sur les icônes : https://github.com/kubernetes/community/tree/master/icons
+
+=== Lab
+
+Pour communiquer avec le cluster kubernetes, nous utilisons la CLI "kubectl" qui permet de dialoguer.
+
+Il est possible soit d'utiliser des actions de type "run" ou "create", soit d'appliquer directement des fichiers descripteurs de type "yaml" ou "json".
+
+include::lab-k8s.adoc[]
+
+include::pod.adoc[]
+
+include::deployment.adoc[]
+
+include::service.adoc[]
+
+=== Ce qui ne sera pas vu dans ce lab
 

@@ -7,8 +7,8 @@ metadata:
 spec:
   containers:
   - name: hello
-    image: localhost:5000/test/node
+    image: jufab/whoami
+    imagePullPolicy: IfNotPresent
     ports:
-      - containerPort: 8080
-  imagePullSecrets:
-    - name: registrypullsecret
+      - containerPort: 80
+        name: hello-port

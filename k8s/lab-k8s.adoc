@@ -1,0 +1,6 @@
+==== Préparation du lab
+
+Utilisation des liens : 
+
+* https://labs.play-with-k8s.com/ => Nécessite un compte github ou docker
+* https://kubernetes.io/docs/tutorials/kubernetes-basics/ => Aucun besoin

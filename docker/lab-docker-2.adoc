@@ -1,4 +1,4 @@
-=== Récuperer et utiliser une image disponible
+==== Récuperer et utiliser une image disponible
 
 Utilisation de l'image nginx.
 

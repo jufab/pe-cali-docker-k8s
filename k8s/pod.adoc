@@ -1,0 +1,12 @@
+==== Pod
+
+Démarrons par le plus petit élément à savoir le pod.
+
+Le pod est constitué de 1 à n conteneur : dans la pratique on limite à 1 conteneur par pod.
+
+Création du premier pod : 
+
+[source,console]
+----
+kubectl run whoami --image=jufab/whoami:latest --port=80 --generator=run-pod/v1
+----
