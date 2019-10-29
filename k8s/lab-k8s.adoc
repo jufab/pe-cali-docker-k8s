@@ -4,3 +4,11 @@ Utilisation des liens :
 
 * https://labs.play-with-k8s.com/ => Nécessite un compte github ou docker
 * https://kubernetes.io/docs/tutorials/kubernetes-basics/ => Aucun besoin
+
+Se connecter, ajouter deux instance et démarrer l'instruction 1 et 2 sur une des instances.
+
+Noter bien durant l'installation de l'instruction 1 la commande type elle vous sera utile:
+
+kubeadm join XXX.XXX.XXX.XXX:XXXX --token xxxxxxxxx --discovery-token-ca-cert-hash xxxxxxxxxxx
+
+Appliquer la commande "kubeadm join ...

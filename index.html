@@ -25,6 +25,7 @@
 --linkcoloralternate:#f44336;
 --white:#FFFFFF;
 --black:#000000;
+--greycode:#F7F7F8;
 }
 
 /* Text styles */
@@ -35,7 +36,7 @@ h3,h4,h5,h6{color:var(--secondarycolor);font-family: "Ubuntu",sans-serif;}
 .title{color:(--primarycolor) !important;font-family:"Ubuntu",sans-serif;font-style: normal; font-weight: normal;}
 p{font-family: "Ubuntu",sans-serif ! important}
 #toc.toc2 a:link{color:white;}
-code{background-color: var(--secondarycolor) !important;color:var(--white)}
+code{background-color: var(--greycode) !important;color:var(--white)}
 
 
 /* Table styles */
@@ -55,6 +56,7 @@ table {
   width: 55vw!important;
   font-size: 3vw;
 }
+
 </style>
 </head>
 <body class="article toc2 toc-left">
@@ -601,6 +603,18 @@ docker rm -f nginx</code></pre>
 <p><a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/" class="bare">https://kubernetes.io/docs/tutorials/kubernetes-basics/</a> &#8658; Aucun besoin</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>Se connecter, ajouter deux instance et démarrer l&#8217;instruction 1 et 2 sur une des instances.</p>
+</div>
+<div class="paragraph">
+<p>Noter bien durant l&#8217;installation de l&#8217;instruction 1 la commande type elle vous sera utile:</p>
+</div>
+<div class="paragraph">
+<p>kubeadm join XXX.XXX.XXX.XXX:XXXX --token xxxxxxxxx --discovery-token-ca-cert-hash xxxxxxxxxxx</p>
+</div>
+<div class="paragraph">
+<p>Appliquer la commande "kubeadm join &#8230;&#8203;</p>
 </div>
 </div>
 <div class="sect3">
