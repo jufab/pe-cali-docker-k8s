@@ -884,7 +884,46 @@ whoami    3         3         3            3           6m</code></pre>
 </div>
 <div class="sect3">
 <h4 id="_service">Service</h4>
-
+<div class="paragraph">
+<p>Un service est une ressource permettant d&#8217;accéder à un ensemble de pods défini par un sélecteur.</p>
+</div>
+<div class="paragraph">
+<p>Un service va permettre d&#8217;exposer des pods et pouvoir y accéder sans que l&#8217;on est besoin d&#8217;avoir la moindre information au sujet des pods qu&#8217;il expose.</p>
+</div>
+<div class="paragraph">
+<p>Le sélecteur des pods dans le service va se définir via des labels que les pods possédent.</p>
+</div>
+<div class="paragraph">
+<p>Le service va permettre aussi d&#8217;exposer celui-ci sur un port différent de celui du pod</p>
+</div>
+<div class="paragraph">
+<p>1) On créé un service via un fichier "service.yaml"</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">cat &gt; service.yaml &lt;&lt; eof
+apiVersion: v1
+kind: Service
+metadata:
+  name: whoami
+spec:
+  selector:
+    app: whoami
+  ports:
+  - port: 80
+    targetPort: 80
+eof
+kubectl apply -f service.yaml</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>2) On vérifie la création de ce service via</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">kubectl get svc</code></pre>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_ingress">Ingress</h4>

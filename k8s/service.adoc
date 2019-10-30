@@ -1,1 +1,36 @@
 ==== Service
+
+Un service est une ressource permettant d'accéder à un ensemble de pods défini par un sélecteur.
+
+Un service va permettre d'exposer des pods et pouvoir y accéder sans que l'on est besoin d'avoir la moindre information au sujet des pods qu'il expose.
+
+Le sélecteur des pods dans le service va se définir via des labels que les pods possédent.
+
+Le service va permettre aussi d'exposer celui-ci sur un port différent de celui du pod
+
+1) On créé un service via un fichier "service.yaml"
+
+[source,console]
+----
+cat > service.yaml << eof
+apiVersion: v1
+kind: Service
+metadata:
+  name: whoami
+spec:
+  selector:
+    app: whoami
+  ports:
+  - port: 80
+    targetPort: 80
+eof
+kubectl apply -f service.yaml
+----
+
+2) On vérifie la création de ce service via
+
+[source,console]
+----
+kubectl get svc
+----
+
