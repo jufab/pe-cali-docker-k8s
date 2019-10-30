@@ -4,7 +4,7 @@ Démarrons par le plus petit élément à savoir le pod.
 
 Le pod est constitué de 1 à n conteneur : dans la pratique on limite à 1 conteneur par pod.
 
-Création du premier pod (en version Ligne de commande): 
+1) Création du premier pod (en version Ligne de commande): 
 
 [source,console]
 ----
@@ -33,12 +33,51 @@ whoami    1/1       Running   0          9m
 ----
 
 
-Réalisons la même commande mais via un fichier yaml.
+2) Réalisons la même commande mais via un fichier yaml.
 
-On supprime d'abord le pod fraichement créé.
+On supprime d'abord le pod fraîchement créé.
 
 [source,console]
 ----
 kubectl delete po whoami
 ----
 
+et on crée le nouveau à l'aide du fichier yaml "pod.yaml" que l'on va lui aussi créer
+
+[source,console]
+----
+cat > pod.yaml << eof
+apiVersion: v1
+kind: Pod
+metadata:
+  name: whoami
+  labels:
+    name: whoami
+spec:
+  containers:
+  - name: whoami
+    image: whoami:latest
+    imagePullPolicy: IfNotPresent
+    ports:
+      - containerPort: 80
+eof
+kubectl apply -f pod.yaml
+----
+
+On vérifie que le pod est crée et qu'il est opérationnel
+
+[source,console]
+----
+kubectl get po
+----
+
+On doit obtenir
+
+[source,console]
+----
+NAME      READY     STATUS    RESTARTS   AGE
+whoami    1/1       Running   0          9m
+----
+
+
+TODO: Faire les ressources limit et les probes

@@ -124,5 +124,9 @@ include::deployment.adoc[]
 
 include::service.adoc[]
 
+include::ingress.adoc[]
+
+include::namespace.adoc[]
+
 === Ce qui ne sera pas vu dans ce lab
 

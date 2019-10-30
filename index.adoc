@@ -1,5 +1,7 @@
 = Coding Lab - Docker - Kubernetes
 :toc: left
+:toc-title: Sommaire
+:toclevels: 3
 :imagesdir: assets/
 :stylesdir: css/
 :stylesheet: ubuntu.css

@@ -7,27 +7,7 @@
 
 === Nom court des ressources Kubernetes
 
-[%header,cols=2*]
-|===
-|Type de ressource 
-|Nom court 
+Un tableau est disponible à l'adresse suivante :
 
-|Pod
-|po
+https://kubernetes.io/docs/reference/kubectl/overview/#resource-types
 
-|service
-|svc
-
-|deployment
-|deploy
-
-|daemonset
-|ds
-
-|replicaset
-|rs
-
-|replicationcontroller
-|rc
-
-|===

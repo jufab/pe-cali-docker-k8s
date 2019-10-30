@@ -1,2 +1,81 @@
 ==== Deployment
 
+Suite à la création du pod, nous allons voir dans cette partie comment gérer le nombre d'instance de notre application.
+
+Pour réaliser cette gestion, il est recommandé d'utiliser une ressource "deployment".
+
+Réalisons le deploiement de l'application via 2 pods.
+
+1) Pour se faire, nous allons créer le fichier "deployment.yaml" et nous allons l'appliquer
+
+[source,console]
+----
+cat > deployment.yaml << eof
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: whoami
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: whoami
+  template:
+    metadata:
+      labels:
+        app: whoami
+    spec:
+      containers:
+      - name: whoami
+        image: whoami:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+eof
+kubectl apply -f deployment.yaml
+----
+
+2) On vérifie la présence des 2 pods et du deploiement via la commande :
+
+[source,console]
+----
+kubectl get po,deploy
+----
+
+on obtient
+
+[source,console]
+----
+NAME                          READY     STATUS    RESTARTS   AGE
+pod/whoami-59494cdf4c-gx5n9   0/1       Pending   0          18s
+pod/whoami-59494cdf4c-w7w96   0/1       Pending   0          18s
+
+NAME                           DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+deployment.extensions/whoami   2         2         2            0           18s
+----
+
+NOTE: Le nom des pods sont générés à la suite de la déclaration dans le deploiement.
+
+3) On passe le nombre d'instance de pods de 2 à 3.
+
+Pour se faire on utilise la commande suivante :
+
+[source,console]
+----
+kubectl scale --replicas=3 deployment/whoami
+----
+
+le nombre d'instance passe à 3 par service
+
+[source,console]
+----
+kubectl get rs
+----
+
+on obtient :
+
+[source,console]
+----
+NAME      DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+whoami    3         3         3            3           6m
+----
