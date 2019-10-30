@@ -51,7 +51,7 @@ pod/whoami-59494cdf4c-gx5n9   0/1       Pending   0          18s
 pod/whoami-59494cdf4c-w7w96   0/1       Pending   0          18s
 
 NAME                           DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-deployment.extensions/whoami   2         2         2            0           18s
+deployment.extensions/whoami   2         2         2            2           18s
 ----
 
 NOTE: Le nom des pods sont générés à la suite de la déclaration dans le deploiement.

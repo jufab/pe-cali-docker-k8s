@@ -838,7 +838,7 @@ pod/whoami-59494cdf4c-gx5n9   0/1       Pending   0          18s
 pod/whoami-59494cdf4c-w7w96   0/1       Pending   0          18s
 
 NAME                           DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-deployment.extensions/whoami   2         2         2            0           18s</code></pre>
+deployment.extensions/whoami   2         2         2            2           18s</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -923,6 +923,133 @@ kubectl apply -f service.yaml</code></pre>
 <div class="content">
 <pre class="highlight"><code class="language-console" data-lang="console">kubectl get svc</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>qui nous donnera</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   10.96.0.1       &lt;none&gt;        443/TCP   17m
+whoami       ClusterIP   10.108.134.96   &lt;none&gt;        80/TCP    11s</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p>Dans la description, il manque une information au niveau ".spec.type" qui permet de spécifier le type du service.</p>
+</div>
+<div class="paragraph">
+<p>Il existe trois type:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>ClusterIP : service non exposé en dehors du cluster, mais accesible par les membres du cluster</p>
+</li>
+<li>
+<p>NodePort : réserve un port qui sera appliqué à l&#8217;ensemble du cluster (réservation) généralement entre 30000 - 32767</p>
+</li>
+<li>
+<p>LoadBalancer : provisionne une adresse IP externe par l&#8217;intermédiare de la plateforme.</p>
+</li>
+</ul>
+</div>
+<hr>
+<div class="paragraph">
+<p>Comment ça marche un service?</p>
+</div>
+<div class="paragraph">
+<p>Le service pointe vers un endpoint. Le endpoint rafraichit régulièrement la liste des IP des pods correspondant au selecteur.
+Le service a ainsi l&#8217;ensemble des adresses ip des pods pour communiquer.</p>
+</div>
+<div class="paragraph">
+<p>Pour visualiser un endpoint :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">kubectl get endpoints whoami</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>donnera :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">NAME      ENDPOINTS                   AGE
+whoami    10.44.0.1:80,10.44.0.2:80   2m</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p>LoadBalancer :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">cat &gt; service-loadbalancer.yaml &lt;&lt; eof
+apiVersion: v1
+kind: Service
+metadata:
+  name: whoami
+spec:
+  type: LoadBalancer
+  selector:
+    app: whoami
+  ports:
+  - port: 80
+    targetPort: 80
+eof
+kubectl apply -f service-loadbalancer.yaml</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">NAME         TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+kubernetes   ClusterIP      10.96.0.1       &lt;none&gt;        443/TCP        46m
+whoami       LoadBalancer   10.109.74.243   &lt;pending&gt;     80:31592/TCP   11s</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Si la plateforme (comme c&#8217;est le cas ici) n&#8217;a pas de service permettant d&#8217;obtenir une adresse externe, alors elle reste à l&#8217;état pending.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>NodePort :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">cat &gt; service-nodeport.yaml &lt;&lt; eof
+apiVersion: v1
+kind: Service
+metadata:
+  name: whoami
+spec:
+  type: NodePort
+  selector:
+    app: whoami
+  ports:
+  - port: 80
+    targetPort: 80
+eof
+kubectl apply -f service-nodeport.yaml</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+kubernetes   ClusterIP   10.96.0.1       &lt;none&gt;        443/TCP        39m
+whoami       NodePort    10.109.63.115   &lt;none&gt;        80:31178/TCP   34m</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>On peut accéder à la ressource via l&#8217;url externe + le port attribué par NodePort.</p>
 </div>
 </div>
 <div class="sect3">

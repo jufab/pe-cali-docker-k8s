@@ -34,3 +34,107 @@ kubectl apply -f service.yaml
 kubectl get svc
 ----
 
+qui nous donnera
+
+[source,console]
+----
+NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   10.96.0.1       <none>        443/TCP   17m
+whoami       ClusterIP   10.108.134.96   <none>        80/TCP    11s
+----
+
+
+Comment ça marche un service?
+
+Le service pointe vers un endpoint. Le endpoint rafraichit régulièrement la liste des IP des pods correspondant au selecteur.
+Le service a ainsi l'ensemble des adresses ip des pods pour communiquer.
+
+Pour visualiser un endpoint : 
+
+[source,console]
+----
+kubectl get endpoints whoami
+----
+
+donnera :
+[source,console]
+----
+NAME      ENDPOINTS                   AGE
+whoami    10.44.0.1:80,10.44.0.2:80   2m
+----
+
+---
+
+Dans la description, il manque une information au niveau ".spec.type" qui permet de spécifier le type du service. 
+
+Il existe trois type: 
+
+* ClusterIP : service non exposé en dehors du cluster, mais accesible par les membres du cluster
+* NodePort : réserve un port qui sera appliqué à l'ensemble du cluster (réservation) généralement entre 30000 - 32767
+* LoadBalancer : provisionne une adresse IP externe par l'intermédiare de la plateforme.
+
+---
+
+Type LoadBalancer
+
+[source,console]
+----
+cat > service-loadbalancer.yaml << eof
+apiVersion: v1
+kind: Service
+metadata:
+  name: whoami
+spec:
+  type: LoadBalancer
+  selector:
+    app: whoami
+  ports:
+  - port: 80
+    targetPort: 80
+eof
+kubectl apply -f service-loadbalancer.yaml
+----
+
+
+[source,console]
+----
+NAME         TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+kubernetes   ClusterIP      10.96.0.1       <none>        443/TCP        46m
+whoami       LoadBalancer   10.109.74.243   <pending>     80:31592/TCP   11s
+----
+
+NOTE: Si la plateforme (comme c'est le cas ici) n'a pas de service permettant d'obtenir une adresse externe, alors elle reste à l'état pending.
+
+
+Type NodePort : 
+
+[source,console]
+----
+cat > service-nodeport.yaml << eof
+apiVersion: v1
+kind: Service
+metadata:
+  name: whoami
+spec:
+  type: NodePort
+  selector:
+    app: whoami
+  ports:
+  - port: 80
+    targetPort: 80
+eof
+kubectl apply -f service-nodeport.yaml
+----
+
+
+[source,console]
+----
+NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+kubernetes   ClusterIP   10.96.0.1       <none>        443/TCP        39m
+whoami       NodePort    10.109.63.115   <none>        80:31178/TCP   34m
+----
+
+On peut accéder à la ressource via l'url externe + le port attribué par NodePort.
+
+
+
