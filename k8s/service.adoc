@@ -135,6 +135,5 @@ whoami       NodePort    10.109.63.115   <none>        80:31178/TCP   34m
 ----
 
 On peut accéder à la ressource via l'url externe + le port attribué par NodePort.
-
-
+Dans l'exemple au dessus il s'agit du port 31178
 

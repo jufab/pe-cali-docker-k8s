@@ -1,1 +1,27 @@
 ==== Namespace
+
+Les espaces de nom sont des emplacements permettant d'isoler tout un ensemble applicatif au sein du cluster Kubernetes.
+Il est ainsi possible par l'intermédiaire des espaces de nom de gérer par exemple la même application dans différents namespace. Le cas le plus souvant utilisé est celui des environnements et d'une même application.
+Un nom ne peut être utilisé deux fois dans un namespace mais peut apparaitre plusieurs fois dans différents namespaces.
+
+Pour créer un espace de nom :
+
+[source,console]
+----
+kubectl create ns mon-espace
+----
+
+pour vérifier son existence
+
+[source,console]
+----
+kubectl get ns mon-espace
+----
+
+qui donnera
+
+[source,console]
+----
+NAME         STATUS    AGE
+mon-espace   Active    46s
+----

@@ -101,7 +101,6 @@ table {
 <li><a href="#_pod">Pod</a></li>
 <li><a href="#_deployment">Deployment</a></li>
 <li><a href="#_service">Service</a></li>
-<li><a href="#_ingress">Ingress</a></li>
 <li><a href="#_namespace">Namespace</a></li>
 </ul>
 </li>
@@ -934,27 +933,6 @@ kubernetes   ClusterIP   10.96.0.1       &lt;none&gt;        443/TCP   17m
 whoami       ClusterIP   10.108.134.96   &lt;none&gt;        80/TCP    11s</code></pre>
 </div>
 </div>
-<hr>
-<div class="paragraph">
-<p>Dans la description, il manque une information au niveau ".spec.type" qui permet de spécifier le type du service.</p>
-</div>
-<div class="paragraph">
-<p>Il existe trois type:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>ClusterIP : service non exposé en dehors du cluster, mais accesible par les membres du cluster</p>
-</li>
-<li>
-<p>NodePort : réserve un port qui sera appliqué à l&#8217;ensemble du cluster (réservation) généralement entre 30000 - 32767</p>
-</li>
-<li>
-<p>LoadBalancer : provisionne une adresse IP externe par l&#8217;intermédiare de la plateforme.</p>
-</li>
-</ul>
-</div>
-<hr>
 <div class="paragraph">
 <p>Comment ça marche un service?</p>
 </div>
@@ -981,7 +959,27 @@ whoami    10.44.0.1:80,10.44.0.2:80   2m</code></pre>
 </div>
 <hr>
 <div class="paragraph">
-<p>LoadBalancer :</p>
+<p>Dans la description, il manque une information au niveau ".spec.type" qui permet de spécifier le type du service.</p>
+</div>
+<div class="paragraph">
+<p>Il existe trois type:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>ClusterIP : service non exposé en dehors du cluster, mais accesible par les membres du cluster</p>
+</li>
+<li>
+<p>NodePort : réserve un port qui sera appliqué à l&#8217;ensemble du cluster (réservation) généralement entre 30000 - 32767</p>
+</li>
+<li>
+<p>LoadBalancer : provisionne une adresse IP externe par l&#8217;intermédiare de la plateforme.</p>
+</li>
+</ul>
+</div>
+<hr>
+<div class="paragraph">
+<p>Type LoadBalancer</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1021,7 +1019,7 @@ Si la plateforme (comme c&#8217;est le cas ici) n&#8217;a pas de service permett
 </table>
 </div>
 <div class="paragraph">
-<p>NodePort :</p>
+<p>Type NodePort :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1049,21 +1047,50 @@ whoami       NodePort    10.109.63.115   &lt;none&gt;        80:31178/TCP   34m<
 </div>
 </div>
 <div class="paragraph">
-<p>On peut accéder à la ressource via l&#8217;url externe + le port attribué par NodePort.</p>
+<p>On peut accéder à la ressource via l&#8217;url externe + le port attribué par NodePort.
+Dans l&#8217;exemple au dessus il s&#8217;agit du port 31178</p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_ingress">Ingress</h4>
-
 </div>
 <div class="sect3">
 <h4 id="_namespace">Namespace</h4>
-
+<div class="paragraph">
+<p>Les espaces de nom sont des emplacements permettant d&#8217;isoler tout un ensemble applicatif au sein du cluster Kubernetes.
+Il est ainsi possible par l&#8217;intermédiaire des espaces de nom de gérer par exemple la même application dans différents namespace. Le cas le plus souvant utilisé est celui des environnements et d&#8217;une même application.
+Un nom ne peut être utilisé deux fois dans un namespace mais peut apparaitre plusieurs fois dans différents namespaces.</p>
+</div>
+<div class="paragraph">
+<p>Pour créer un espace de nom :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">kubectl create ns mon-espace</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>pour vérifier son existence</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">kubectl get ns mon-espace</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>qui donnera</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">NAME         STATUS    AGE
+mon-espace   Active    46s</code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_ce_qui_ne_sera_pas_vu_dans_ce_lab_2">Ce qui ne sera pas vu dans ce lab</h3>
-
+<div class="paragraph">
+<p>Les Ingress : la plateforme lab ne permet pas de le réaliser
+(montrer un exemple?)</p>
+</div>
 </div>
 </div>
 </div>
