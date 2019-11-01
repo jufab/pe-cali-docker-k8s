@@ -28,7 +28,7 @@ kubectl apply -n kube-system -f \
 ----
 
 
-Sur l'instance du précédant lab, appliquer la commande "kubeadm join..." préciseusement conservée.
+Sur l'instance du précédant lab, appliquer la commande "kubeadm join..." précieusement conservée.
 
 Pour vérifier que tout va bien on vérifie qu'il existe 2 noeuds dans notre cluster dont 1 master via : 
 

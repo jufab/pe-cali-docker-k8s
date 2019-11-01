@@ -1,8 +1,9 @@
-== Annnexe
+== Annexe
 === source   
 
-* https://www.pluralsight.com/courses/getting-started-kubernetes
 * https://kubernetes.io/docs/tutorials/kubernetes-basics/
+* https://www.katacoda.com/courses/kubernetes
+* https://www.pluralsight.com/courses/getting-started-kubernetes
 
 
 === Nom court des ressources Kubernetes

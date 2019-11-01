@@ -1,6 +1,6 @@
 == Astuce
 
-=== Ecrire dans un fichier en ligne de commande
+=== Écrire dans un fichier en ligne de commande
 
 [source,console]
 ----

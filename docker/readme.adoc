@@ -3,7 +3,7 @@
 
 Docker est une technologie de virtualisation par conteneurs reposant sur le LXC (LinuX Containers)
 
-=== Petite Vidéo d'explication
+=== Petite vidéo d'explication
 
 video::caXHwYC3tq8[youtube]
 
@@ -23,10 +23,10 @@ include::lab-docker-2.adoc[]
 
 _Mais que vous pourriez par la suite approfondir_
 
-* le push d'une image vers un entrepôt
+* Le push d'une image vers un entrepôt
 * Le principe des couches (Layer) au sein de docker qui constitue une image
 * Le build d'image multilayer
-* le réseau : création, communication inter conteneur etc...
-* la gestion des images et les "insecures registry"
-* docker-compose ou comment démarrer une stack complète.
-* docker-swarm : orchestrateur
+* Le réseau : création, communication inter conteneur etc...
+* La gestion des images, les "registry" et les "insecures registry"
+* Docker-compose ou comment démarrer une stack complète.
+* Docker Swarm : orchestrateur

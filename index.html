@@ -66,7 +66,7 @@ table {
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
 <ul class="sectlevel1">
-<li><a href="#_pré_requis">Pré-requis</a></li>
+<li><a href="#_prérequis">Prérequis</a></li>
 <li><a href="#_pour_le_lab">Pour le lab</a>
 <ul class="sectlevel2">
 <li><a href="#lab-docker">Pour Docker</a></li>
@@ -75,12 +75,12 @@ table {
 </li>
 <li><a href="#_première_partie_docker">Première Partie - Docker</a>
 <ul class="sectlevel2">
-<li><a href="#_petite_vidéo_dexplication">Petite Vidéo d&#8217;explication</a></li>
+<li><a href="#_petite_vidéo_dexplication">Petite vidéo d&#8217;explication</a></li>
 <li><a href="#_q_a">Q &amp; A</a></li>
 <li><a href="#_lab">Lab</a>
 <ul class="sectlevel3">
 <li><a href="#_créer_notre_première_image_et_conteneur">Créer notre première image et conteneur</a></li>
-<li><a href="#_récuperer_et_utiliser_une_image_disponible">Récuperer et utiliser une image disponible</a></li>
+<li><a href="#_récupérer_et_utiliser_une_image_disponible">Récupérer et utiliser une image disponible</a></li>
 </ul>
 </li>
 <li><a href="#_ce_qui_ne_sera_pas_vu_dans_ce_lab">Ce qui ne sera pas vu dans ce lab</a></li>
@@ -105,9 +105,10 @@ table {
 </ul>
 </li>
 <li><a href="#_ce_qui_ne_sera_pas_vu_dans_ce_lab_2">Ce qui ne sera pas vu dans ce lab</a></li>
+<li><a href="#_kubectl">Kubectl</a></li>
 </ul>
 </li>
-<li><a href="#_annnexe">Annnexe</a>
+<li><a href="#_annexe">Annexe</a>
 <ul class="sectlevel2">
 <li><a href="#_source">source</a></li>
 <li><a href="#_nom_court_des_ressources_kubernetes">Nom court des ressources Kubernetes</a></li>
@@ -115,7 +116,7 @@ table {
 </li>
 <li><a href="#_astuce">Astuce</a>
 <ul class="sectlevel2">
-<li><a href="#_ecrire_dans_un_fichier_en_ligne_de_commande">Ecrire dans un fichier en ligne de commande</a></li>
+<li><a href="#_écrire_dans_un_fichier_en_ligne_de_commande">Écrire dans un fichier en ligne de commande</a></li>
 <li><a href="#_dashboard_kubernetes">Dashboard Kubernetes</a></li>
 </ul>
 </li>
@@ -124,10 +125,10 @@ table {
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_pré_requis">Pré-requis</h2>
+<h2 id="_prérequis">Prérequis</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Un compte github (pour le lab K8s) ou un compte docker (pour le lab K8s et Docker)</p>
+<p>Un compte GitHub (pour le lab K8s) ou un compte docker (pour le lab K8s et Docker)</p>
 </div>
 </div>
 </div>
@@ -145,7 +146,7 @@ table {
 <p><a href="https://labs.play-with-docker.com/" class="bare">https://labs.play-with-docker.com/</a> (nécessite un compte "docker")</p>
 </li>
 <li>
-<p><a href="https://labs.play-with-k8s.com/" class="bare">https://labs.play-with-k8s.com/</a> (nécessite un compte "docker" ou github)</p>
+<p><a href="https://labs.play-with-k8s.com/" class="bare">https://labs.play-with-k8s.com/</a> (nécessite un compte "docker" ou GitHub)</p>
 </li>
 </ul>
 </div>
@@ -155,7 +156,7 @@ table {
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://labs.play-with-k8s.com/" class="bare">https://labs.play-with-k8s.com/</a> (nécessite un compte "docker" ou github)</p>
+<p><a href="https://labs.play-with-k8s.com/" class="bare">https://labs.play-with-k8s.com/</a> (nécessite un compte "docker" ou GitHub)</p>
 </li>
 <li>
 <p><a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/" class="bare">https://kubernetes.io/docs/tutorials/kubernetes-basics/</a></p>
@@ -178,7 +179,7 @@ table {
 <p>Docker est une technologie de virtualisation par conteneurs reposant sur le LXC (LinuX Containers)</p>
 </div>
 <div class="sect2">
-<h3 id="_petite_vidéo_dexplication">Petite Vidéo d&#8217;explication</h3>
+<h3 id="_petite_vidéo_dexplication">Petite vidéo d&#8217;explication</h3>
 <div class="videoblock">
 <div class="content">
 <iframe src="https://www.youtube.com/embed/caXHwYC3tq8?rel=0" frameborder="0" allowfullscreen></iframe>
@@ -303,7 +304,7 @@ eof</code></pre>
 <p>8) On vérifie l&#8217;accès à l&#8217;application :</p>
 </div>
 <div class="paragraph">
-<p>Un petit "80" s&#8217;affiche au dessus du terminal. il permet d&#8217;accéder à notre serveur web fraichement deployé</p>
+<p>Un petit "80" s&#8217;affiche au-dessus du terminal. Il permet d&#8217;accéder à notre serveur web fraichement déployé.</p>
 </div>
 <div class="paragraph">
 <p>On peut aussi vérifier en ligne de commande que le hostname correspond bien à celui qui s&#8217;affiche via la commande :</p>
@@ -346,7 +347,7 @@ eof</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_récuperer_et_utiliser_une_image_disponible">Récuperer et utiliser une image disponible</h4>
+<h4 id="_récupérer_et_utiliser_une_image_disponible">Récupérer et utiliser une image disponible</h4>
 <div class="paragraph">
 <p>Utilisation de l&#8217;image nginx.</p>
 </div>
@@ -360,7 +361,7 @@ eof</code></pre>
 <p>2) Après authentification, création de l&#8217;instance "Create instance"</p>
 </div>
 <div class="paragraph">
-<p>(<em>si c&#8217;est pas déjà fait</em>)</p>
+<p>(<em>Si ce n&#8217;est pas déjà fait</em>)</p>
 </div>
 <div class="paragraph">
 <p>3) faire une recherche sur l&#8217;entrepôt d&#8217;images par défaut de docker</p>
@@ -400,13 +401,13 @@ eof</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><em>On utilise ici le port 8080 car le port 80 est déja utilisé par le lab précédent</em></p>
+<p><em>On utilise ici le port 8080 car le port 80 est déjà utilisé par le lab précédent</em></p>
 </div>
 <div class="paragraph">
 <p><em>Le pull de l&#8217;image est facultatif. en lançant la commande de run, docker aurait été chercher l&#8217;image sur le hub si celle-ci n&#8217;existe pas en local.</em></p>
 </div>
 <div class="paragraph">
-<p>6) Une fois tout vérifié et tester, on arrete et supprime les containers via les commandes :</p>
+<p>6) Une fois tout vérifié et tester, on arrête et supprime les containers via les commandes :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -417,7 +418,7 @@ docker rm nginx</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>il existe une alternative plus radical en foçant l&#8217;arrêt via les commandes :</p>
+<p>Il existe une alternative plus radicale en forçant l&#8217;arrêt via les commandes :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -437,7 +438,7 @@ docker rm -f nginx</code></pre>
 <p>Récupérer une image docker depuis le hub docker officiel</p>
 </li>
 <li>
-<p>Arréter un container</p>
+<p>Arrêter un container</p>
 </li>
 <li>
 <p>Supprimer un container</p>
@@ -457,7 +458,7 @@ docker rm -f nginx</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p>le push d&#8217;une image vers un entrepôt</p>
+<p>Le push d&#8217;une image vers un entrepôt</p>
 </li>
 <li>
 <p>Le principe des couches (Layer) au sein de docker qui constitue une image</p>
@@ -466,16 +467,16 @@ docker rm -f nginx</code></pre>
 <p>Le build d&#8217;image multilayer</p>
 </li>
 <li>
-<p>le réseau : création, communication inter conteneur etc&#8230;&#8203;</p>
+<p>Le réseau : création, communication inter conteneur etc&#8230;&#8203;</p>
 </li>
 <li>
-<p>la gestion des images et les "insecures registry"</p>
+<p>La gestion des images, les "registry" et les "insecures registry"</p>
 </li>
 <li>
-<p>docker-compose ou comment démarrer une stack complète.</p>
+<p>Docker-compose ou comment démarrer une stack complète.</p>
 </li>
 <li>
-<p>docker-swarm : orchestrateur</p>
+<p>Docker Swarm : orchestrateur</p>
 </li>
 </ul>
 </div>
@@ -496,7 +497,7 @@ docker rm -f nginx</code></pre>
 <p>Permet de gérer l&#8217;ensemble des conteneurs décrits dans différents "objets".</p>
 </div>
 <div class="paragraph">
-<p>D&#8217;autres orchestrateurs connus? Swarm, Rancher, Mesos, Nomad</p>
+<p>D&#8217;autres orchestrateurs connus ? Swarm, Rancher, Mesos, Nomad</p>
 </div>
 <div class="paragraph">
 <p>(<em>Mais soyons clair, le grand vainqueur reste Kubernetes</em>)</p>
@@ -507,7 +508,7 @@ docker rm -f nginx</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p>c&#8217;est N master</p>
+<p>C&#8217;est N master</p>
 </li>
 <li>
 <p>N noeud/serviteur/workeur</p>
@@ -571,11 +572,11 @@ docker rm -f nginx</code></pre>
 </div>
 <hr>
 <div class="paragraph">
-<p><em>kube-controller-manager</em> : le controller des controllers (gère les noeuds, les endpoints, les namespaces etc&#8230;&#8203;), il gère les evenements/changement et aide à maintenir dans l&#8217;état désiré</p>
+<p><em>kube-controller-manager</em> : le controller des controllers (gère les noeuds, les endpoints, les namespaces etc&#8230;&#8203;), il gère les évènements/changement et aide à maintenir dans l&#8217;état désiré</p>
 </div>
 <hr>
 <div class="paragraph">
-<p><em>kube-scheduler</em> : va ordonnacer le travail et l&#8217;assigner au noeud selon les contraintes et configuration</p>
+<p><em>kube-scheduler</em> : va ordonnancer le travail et l&#8217;assigner au noeud selon les contraintes et configuration</p>
 </div>
 <hr>
 <div class="paragraph">
@@ -594,11 +595,11 @@ docker rm -f nginx</code></pre>
 <div class="paragraph">
 <p><em>Kubelet</em> : l&#8217;agent. Il enregistre le noeud dans le cluster, observe l&#8217;apiserver et communique avec le master.
 Le kubelet ne gère pas l&#8217;état du contenu : il renvoie l&#8217;information au master qui prendra la décision.
-Il exposes les endpoints sur le port :10255 &#8658; il expose par exemple 3 endpoints /spec /healthz /pods (il y en a d&#8217;autre)</p>
+Il expose les endpoints sur le port :10255 &#8658; il expose par exemple 3 endpoints /spec /healthz /pods (il y en a d&#8217;autre)</p>
 </div>
 <hr>
 <div class="paragraph">
-<p><em>container engine</em> : il permet de réaliser le pull des images, démarrer et arreter les containers. Le Container Engine est pluggé en régle générale avec Docker mais peut être pluggé à d&#8217;autres (rktlet, containerd, cri-o, etc..) compatible avec Kubernetes CRI (Container Runtime Interface)</p>
+<p><em>container engine</em> : il permet de réaliser le pull des images, démarrer et arrêter les containers. Le Container Engine est pluggé en règle générale avec Docker mais peut être pluggé à d&#8217;autres (rktlet, containerd, cri-o, etc..) compatible avec Kubernetes CRI (Container Runtime Interface)</p>
 </div>
 <hr>
 <div class="paragraph">
@@ -660,7 +661,7 @@ Il exposes les endpoints sur le port :10255 &#8658; il expose par exemple 3 endp
 </div>
 </div>
 <div class="paragraph">
-<p>Sur l&#8217;instance du précédant lab, appliquer la commande "kubeadm join&#8230;&#8203;" préciseusement conservée.</p>
+<p>Sur l&#8217;instance du précédant lab, appliquer la commande "kubeadm join&#8230;&#8203;" précieusement conservée.</p>
 </div>
 <div class="paragraph">
 <p>Pour vérifier que tout va bien on vérifie qu&#8217;il existe 2 noeuds dans notre cluster dont 1 master via :</p>
@@ -758,7 +759,7 @@ kubectl apply -f pod.yaml</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>On vérifie que le pod est crée et qu&#8217;il est opérationnel</p>
+<p>On vérifie que le pod est créé et qu&#8217;il est opérationnel</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -787,7 +788,7 @@ whoami    1/1       Running   0          9m</code></pre>
 <p>Pour réaliser cette gestion, il est recommandé d&#8217;utiliser une ressource "deployment".</p>
 </div>
 <div class="paragraph">
-<p>Réalisons le deploiement de l&#8217;application via 2 pods.</p>
+<p>Réalisons le déploiement de l&#8217;application via 2 pods.</p>
 </div>
 <div class="paragraph">
 <p>1) Pour se faire, nous allons créer le fichier "deployment.yaml" et nous allons l&#8217;appliquer</p>
@@ -820,7 +821,7 @@ kubectl apply -f deployment.yaml</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>2) On vérifie la présence des 2 pods et du deploiement via la commande :</p>
+<p>2) On vérifie la présence des 2 pods et du déploiement via la commande :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -828,7 +829,7 @@ kubectl apply -f deployment.yaml</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>on obtient</p>
+<p>On obtient</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -847,7 +848,7 @@ deployment.extensions/whoami   2         2         2            2           18s<
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Le nom des pods sont générés à la suite de la déclaration dans le deploiement.
+Le nom des pods sont générés à la suite de la déclaration dans le déploiement.
 </td>
 </tr>
 </table>
@@ -890,13 +891,13 @@ whoami    3         3         3            3           6m</code></pre>
 <p>Un service va permettre d&#8217;exposer des pods et pouvoir y accéder sans que l&#8217;on est besoin d&#8217;avoir la moindre information au sujet des pods qu&#8217;il expose.</p>
 </div>
 <div class="paragraph">
-<p>Le sélecteur des pods dans le service va se définir via des labels que les pods possédent.</p>
+<p>Le sélecteur des pods dans le service va se définir via des labels que les pods possèdent.</p>
 </div>
 <div class="paragraph">
 <p>Le service va permettre aussi d&#8217;exposer celui-ci sur un port différent de celui du pod</p>
 </div>
 <div class="paragraph">
-<p>1) On créé un service via un fichier "service.yaml"</p>
+<p>1) On crée un service via un fichier "service.yaml"</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -937,7 +938,7 @@ whoami       ClusterIP   10.108.134.96   &lt;none&gt;        80/TCP    11s</code
 <p>Comment ça marche un service?</p>
 </div>
 <div class="paragraph">
-<p>Le service pointe vers un endpoint. Le endpoint rafraichit régulièrement la liste des IP des pods correspondant au selecteur.
+<p>Le service pointe vers un endpoint. Le endpoint rafraichit régulièrement la liste des IP des pods correspondant au sélecteur.
 Le service a ainsi l&#8217;ensemble des adresses ip des pods pour communiquer.</p>
 </div>
 <div class="paragraph">
@@ -962,18 +963,18 @@ whoami    10.44.0.1:80,10.44.0.2:80   2m</code></pre>
 <p>Dans la description, il manque une information au niveau ".spec.type" qui permet de spécifier le type du service.</p>
 </div>
 <div class="paragraph">
-<p>Il existe trois type:</p>
+<p>Il existe trois types:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>ClusterIP : service non exposé en dehors du cluster, mais accesible par les membres du cluster</p>
+<p>ClusterIP : service non exposé en dehors du cluster, mais accessible par les membres du cluster</p>
 </li>
 <li>
 <p>NodePort : réserve un port qui sera appliqué à l&#8217;ensemble du cluster (réservation) généralement entre 30000 - 32767</p>
 </li>
 <li>
-<p>LoadBalancer : provisionne une adresse IP externe par l&#8217;intermédiare de la plateforme.</p>
+<p>LoadBalancer : provisionne une adresse IP externe par l&#8217;intermédiaire de la plateforme.</p>
 </li>
 </ul>
 </div>
@@ -1048,14 +1049,14 @@ whoami       NodePort    10.109.63.115   &lt;none&gt;        80:31178/TCP   34m<
 </div>
 <div class="paragraph">
 <p>On peut accéder à la ressource via l&#8217;url externe + le port attribué par NodePort.
-Dans l&#8217;exemple au dessus il s&#8217;agit du port 31178</p>
+Dans l&#8217;exemple au-dessus il s&#8217;agit du port 31178</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_namespace">Namespace</h4>
 <div class="paragraph">
 <p>Les espaces de nom sont des emplacements permettant d&#8217;isoler tout un ensemble applicatif au sein du cluster Kubernetes.
-Il est ainsi possible par l&#8217;intermédiaire des espaces de nom de gérer par exemple la même application dans différents namespace. Le cas le plus souvant utilisé est celui des environnements et d&#8217;une même application.
+Il est ainsi possible par l&#8217;intermédiaire des espaces de nom de gérer par exemple la même application dans différents namespace. Le cas le plus souvent utilisé est celui des environnements et d&#8217;une même application.
 Un nom ne peut être utilisé deux fois dans un namespace mais peut apparaitre plusieurs fois dans différents namespaces.</p>
 </div>
 <div class="paragraph">
@@ -1083,29 +1084,72 @@ Un nom ne peut être utilisé deux fois dans un namespace mais peut apparaitre p
 mon-espace   Active    46s</code></pre>
 </div>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+La suppression d&#8217;un namesapce engendre la suppression de l&#8217;ensemble des éléments qui le compose (Deployment, Pod ,etc&#8230;&#8203;)
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_ce_qui_ne_sera_pas_vu_dans_ce_lab_2">Ce qui ne sera pas vu dans ce lab</h3>
 <div class="paragraph">
-<p>Les Ingress : la plateforme lab ne permet pas de le réaliser
-(montrer un exemple?)</p>
+<p>Il reste encore beaucoup de chose à voir&#8230;&#8203;</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Les Ingress : la plateforme lab ne permet pas de le réaliser.</p>
+</li>
+<li>
+<p>Les Storage : Élément de persistance et de stockage au sein de Kubernetes.</p>
+</li>
+<li>
+<p>Les ConfigMap : permettant de configurer une/des applications</p>
+</li>
+<li>
+<p>Les Secrets : permettant de gérer les mots de passe ou token</p>
+</li>
+<li>
+<p>Les Jobs : traitement batch</p>
+</li>
+<li>
+<p>Les rôles : pour l&#8217;administration etc &#8230;&#8203;
+&#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_kubectl">Kubectl</h3>
+<div class="paragraph">
+<p>plus d&#8217;infos &#8658; <a href="https://kubernetes.io/docs/reference/kubectl/overview/" class="bare">https://kubernetes.io/docs/reference/kubectl/overview/</a></p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_annnexe">Annnexe</h2>
+<h2 id="_annexe">Annexe</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_source">source</h3>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://www.pluralsight.com/courses/getting-started-kubernetes" class="bare">https://www.pluralsight.com/courses/getting-started-kubernetes</a></p>
+<p><a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/" class="bare">https://kubernetes.io/docs/tutorials/kubernetes-basics/</a></p>
 </li>
 <li>
-<p><a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/" class="bare">https://kubernetes.io/docs/tutorials/kubernetes-basics/</a></p>
+<p><a href="https://www.katacoda.com/courses/kubernetes" class="bare">https://www.katacoda.com/courses/kubernetes</a></p>
+</li>
+<li>
+<p><a href="https://www.pluralsight.com/courses/getting-started-kubernetes" class="bare">https://www.pluralsight.com/courses/getting-started-kubernetes</a></p>
 </li>
 </ul>
 </div>
@@ -1125,7 +1169,7 @@ mon-espace   Active    46s</code></pre>
 <h2 id="_astuce">Astuce</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_ecrire_dans_un_fichier_en_ligne_de_commande">Ecrire dans un fichier en ligne de commande</h3>
+<h3 id="_écrire_dans_un_fichier_en_ligne_de_commande">Écrire dans un fichier en ligne de commande</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-console" data-lang="console">cat &gt; nomdufichier &lt;&lt; eof
@@ -1145,7 +1189,7 @@ mon-espace   Active    46s</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-10-30 02:35:48 +0100
+Last updated 2019-11-01 23:16:39 +0100
 </div>
 </div>
 </body>

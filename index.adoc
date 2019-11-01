@@ -8,9 +8,9 @@
 :icons: font
 :showtitle:
 
-== Pré-requis
+== Prérequis
 
-Un compte github (pour le lab K8s) ou un compte docker (pour le lab K8s et Docker)
+Un compte GitHub (pour le lab K8s) ou un compte docker (pour le lab K8s et Docker)
 
 == Pour le lab
 
@@ -20,11 +20,11 @@ Plusieurs possibilités pour tester
 === Pour Docker
 
 * https://labs.play-with-docker.com/ (nécessite un compte "docker")
-* https://labs.play-with-k8s.com/ (nécessite un compte "docker" ou github)
+* https://labs.play-with-k8s.com/ (nécessite un compte "docker" ou GitHub)
 
 === Pour Kubernetes
 
-* https://labs.play-with-k8s.com/ (nécessite un compte "docker" ou github)
+* https://labs.play-with-k8s.com/ (nécessite un compte "docker" ou GitHub)
 * https://kubernetes.io/docs/tutorials/kubernetes-basics/
 
 On favorisera l'utilisation du lien https://labs.play-with-k8s.com/ pour tout faire au même endroit.

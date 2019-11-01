@@ -4,11 +4,11 @@ Un service est une ressource permettant d'accéder à un ensemble de pods défin
 
 Un service va permettre d'exposer des pods et pouvoir y accéder sans que l'on est besoin d'avoir la moindre information au sujet des pods qu'il expose.
 
-Le sélecteur des pods dans le service va se définir via des labels que les pods possédent.
+Le sélecteur des pods dans le service va se définir via des labels que les pods possèdent.
 
 Le service va permettre aussi d'exposer celui-ci sur un port différent de celui du pod
 
-1) On créé un service via un fichier "service.yaml"
+1) On crée un service via un fichier "service.yaml"
 
 [source,console]
 ----
@@ -46,7 +46,7 @@ whoami       ClusterIP   10.108.134.96   <none>        80/TCP    11s
 
 Comment ça marche un service?
 
-Le service pointe vers un endpoint. Le endpoint rafraichit régulièrement la liste des IP des pods correspondant au selecteur.
+Le service pointe vers un endpoint. Le endpoint rafraichit régulièrement la liste des IP des pods correspondant au sélecteur.
 Le service a ainsi l'ensemble des adresses ip des pods pour communiquer.
 
 Pour visualiser un endpoint : 
@@ -67,11 +67,11 @@ whoami    10.44.0.1:80,10.44.0.2:80   2m
 
 Dans la description, il manque une information au niveau ".spec.type" qui permet de spécifier le type du service. 
 
-Il existe trois type: 
+Il existe trois types: 
 
-* ClusterIP : service non exposé en dehors du cluster, mais accesible par les membres du cluster
+* ClusterIP : service non exposé en dehors du cluster, mais accessible par les membres du cluster
 * NodePort : réserve un port qui sera appliqué à l'ensemble du cluster (réservation) généralement entre 30000 - 32767
-* LoadBalancer : provisionne une adresse IP externe par l'intermédiare de la plateforme.
+* LoadBalancer : provisionne une adresse IP externe par l'intermédiaire de la plateforme.
 
 ---
 
@@ -135,5 +135,5 @@ whoami       NodePort    10.109.63.115   <none>        80:31178/TCP   34m
 ----
 
 On peut accéder à la ressource via l'url externe + le port attribué par NodePort.
-Dans l'exemple au dessus il s'agit du port 31178
+Dans l'exemple au-dessus il s'agit du port 31178
 

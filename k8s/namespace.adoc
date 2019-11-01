@@ -1,7 +1,7 @@
 ==== Namespace
 
 Les espaces de nom sont des emplacements permettant d'isoler tout un ensemble applicatif au sein du cluster Kubernetes.
-Il est ainsi possible par l'intermédiaire des espaces de nom de gérer par exemple la même application dans différents namespace. Le cas le plus souvant utilisé est celui des environnements et d'une même application.
+Il est ainsi possible par l'intermédiaire des espaces de nom de gérer par exemple la même application dans différents namespace. Le cas le plus souvent utilisé est celui des environnements et d'une même application.
 Un nom ne peut être utilisé deux fois dans un namespace mais peut apparaitre plusieurs fois dans différents namespaces.
 
 Pour créer un espace de nom :
@@ -25,3 +25,5 @@ qui donnera
 NAME         STATUS    AGE
 mon-espace   Active    46s
 ----
+
+NOTE: La suppression d'un namesapce engendre la suppression de l'ensemble des éléments qui le compose (Deployment, Pod ,etc...)

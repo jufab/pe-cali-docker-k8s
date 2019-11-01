@@ -1,4 +1,4 @@
-==== Récuperer et utiliser une image disponible
+==== Récupérer et utiliser une image disponible
 
 Utilisation de l'image nginx.
 
@@ -8,7 +8,7 @@ Utilisation de l'image nginx.
 
 2) Après authentification, création de l'instance "Create instance"
 
-(__si c'est pas déjà fait__)
+(__Si ce n'est pas déjà fait__)
 
 3) faire une recherche sur l'entrepôt d'images par défaut de docker
 
@@ -38,11 +38,11 @@ _Par la commande?_
 docker run --name nginx -d -p 8080:80 nginx
 ----
 
-_On utilise ici le port 8080 car le port 80 est déja utilisé par le lab précédent_
+_On utilise ici le port 8080 car le port 80 est déjà utilisé par le lab précédent_
 
 _Le pull de l'image est facultatif. en lançant la commande de run, docker aurait été chercher l'image sur le hub si celle-ci n'existe pas en local._
 
-6) Une fois tout vérifié et tester, on arrete et supprime les containers via les commandes :
+6) Une fois tout vérifié et tester, on arrête et supprime les containers via les commandes :
 
 [source,console]
 ----
@@ -52,7 +52,7 @@ docker stop nginx
 docker rm nginx
 ----
 
-il existe une alternative plus radical en foçant l'arrêt via les commandes :
+Il existe une alternative plus radicale en forçant l'arrêt via les commandes :
 
 [source,console]
 ----
@@ -65,6 +65,6 @@ docker rm -f nginx
 Nous avons appris des commandes docker supplémentaires qui servent à
 
 * Récupérer une image docker depuis le hub docker officiel
-* Arréter un container
+* Arrêter un container
 * Supprimer un container
 * Forcer l'arrêt et la suppression du container

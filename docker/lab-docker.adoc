@@ -87,7 +87,7 @@ docker ps
 
 8) On vérifie l'accès à l'application :
 
-Un petit "80" s'affiche au dessus du terminal. il permet d'accéder à notre serveur web fraichement deployé
+Un petit "80" s'affiche au-dessus du terminal. Il permet d'accéder à notre serveur web fraichement déployé.
 
 On peut aussi vérifier en ligne de commande que le hostname correspond bien à celui qui s'affiche via la commande :
 

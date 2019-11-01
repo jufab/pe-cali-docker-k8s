@@ -64,7 +64,7 @@ eof
 kubectl apply -f pod.yaml
 ----
 
-On vérifie que le pod est crée et qu'il est opérationnel
+On vérifie que le pod est créé et qu'il est opérationnel
 
 [source,console]
 ----

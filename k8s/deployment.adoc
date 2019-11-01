@@ -4,7 +4,7 @@ Suite à la création du pod, nous allons voir dans cette partie comment gérer 
 
 Pour réaliser cette gestion, il est recommandé d'utiliser une ressource "deployment".
 
-Réalisons le deploiement de l'application via 2 pods.
+Réalisons le déploiement de l'application via 2 pods.
 
 1) Pour se faire, nous allons créer le fichier "deployment.yaml" et nous allons l'appliquer
 
@@ -35,14 +35,14 @@ eof
 kubectl apply -f deployment.yaml
 ----
 
-2) On vérifie la présence des 2 pods et du deploiement via la commande :
+2) On vérifie la présence des 2 pods et du déploiement via la commande :
 
 [source,console]
 ----
 kubectl get po,deploy
 ----
 
-on obtient
+On obtient
 
 [source,console]
 ----
@@ -54,7 +54,7 @@ NAME                           DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 deployment.extensions/whoami   2         2         2            2           18s
 ----
 
-NOTE: Le nom des pods sont générés à la suite de la déclaration dans le deploiement.
+NOTE: Le nom des pods sont générés à la suite de la déclaration dans le déploiement.
 
 3) On passe le nombre d'instance de pods de 2 à 3.
 
