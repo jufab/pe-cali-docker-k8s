@@ -12,3 +12,22 @@ spec:
     ports:
       - containerPort: 80
         name: whoami-port
+    resources:
+        requests:
+          memory: 100M
+          cpu: "0.1"
+        limits:
+          memory: 150M
+          cpu: "0.4"
+    livenessProbe:
+      httpGet:
+        path: /
+        port: whoami-port
+      initialDelaySeconds: 2
+      periodSeconds: 3
+    readinessProbe:
+      httpGet:
+        path: /
+        port: whoami-port
+      initialDelaySeconds: 2
+      periodSeconds: 3

@@ -775,7 +775,111 @@ whoami    1/1       Running   0          9m</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>TODO: Faire les ressources limit et les probes</p>
+<p>Il est possible de définir des ressources au niveau du pod qui seront nécessaires au bon fonctionnement et qui pourra être nécessaire dans le choix du noeud exécutant le pod.</p>
+</div>
+<div class="paragraph">
+<p>Il est aussi possible de définir une valeur limite qui pourrait engendrer l&#8217;arrêt du pod si celui-ci les dépasse.</p>
+</div>
+<div class="paragraph">
+<p>un exemple :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">kubectl delete pod whoami
+cat &gt; pod-resource.yaml &lt;&lt; eof
+apiVersion: v1
+kind: Pod
+metadata:
+  name: whoami
+  labels:
+    name: whoami
+spec:
+  containers:
+  - name: whoami
+    image: whoami:latest
+    imagePullPolicy: IfNotPresent
+    ports:
+      - containerPort: 80
+    resources:
+      requests:
+        memory: 100M
+        cpu: "0.1"
+      limits:
+        memory: 150M
+        cpu: "0.4"
+eof
+kubectl apply -f pod-resource.yaml</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Il existe aussi au niveau du pod 2 sondes essentiels permettant de vérifier l&#8217;état du pod ou de garantir que celui est prêt.
+Il s&#8217;agit des sondes suivantes :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>LivenessProbe : indique si le conteneur est en cours d&#8217;exécution</p>
+</li>
+<li>
+<p>ReadinessProbe : indique si le conteneur est prêt à recevoir du traffic</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+il existe une troisième sonde (startupProbe) orientée pour des applications legacy ou lourdes qui requière un temps de démarrage conséquent. Cette sonde désactive toutes les sondes tant que le contenuer n&#8217;est pas démarré.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Voici un exemple:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">kubectl delete pod whoami
+cat &gt; pod-probe.yaml &lt;&lt; eof
+apiVersion: v1
+kind: Pod
+metadata:
+  name: whoami
+  labels:
+    name: whoami
+spec:
+  containers:
+  - name: whoami
+    image: whoami:latest
+    imagePullPolicy: IfNotPresent
+    ports:
+      - containerPort: 80
+        name: whoami-port
+    resources:
+        requests:
+          memory: 100M
+          cpu: "0.1"
+        limits:
+          memory: 150M
+          cpu: "0.4"
+    livenessProbe:
+      httpGet:
+        path: /
+        port: whoami-port
+      initialDelaySeconds: 2
+      periodSeconds: 3
+    readinessProbe:
+      httpGet:
+        path: /
+        port: whoami-port
+      initialDelaySeconds: 2
+      periodSeconds: 3
+eof
+kubectl apply -f pod-probe.yaml</code></pre>
+</div>
 </div>
 </div>
 <div class="sect3">

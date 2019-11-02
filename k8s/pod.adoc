@@ -79,5 +79,87 @@ NAME      READY     STATUS    RESTARTS   AGE
 whoami    1/1       Running   0          9m
 ----
 
+Il est possible de définir des ressources au niveau du pod qui seront nécessaires au bon fonctionnement et qui pourra être nécessaire dans le choix du noeud exécutant le pod.
 
-TODO: Faire les ressources limit et les probes
+Il est aussi possible de définir une valeur limite qui pourrait engendrer l'arrêt du pod si celui-ci les dépasse.
+
+un exemple :
+
+[source,console]
+----
+kubectl delete pod whoami
+cat > pod-resource.yaml << eof
+apiVersion: v1
+kind: Pod
+metadata:
+  name: whoami
+  labels:
+    name: whoami
+spec:
+  containers:
+  - name: whoami
+    image: whoami:latest
+    imagePullPolicy: IfNotPresent
+    ports:
+      - containerPort: 80
+    resources:
+      requests:
+        memory: 100M
+        cpu: "0.1"
+      limits:
+        memory: 150M
+        cpu: "0.4"
+eof
+kubectl apply -f pod-resource.yaml
+----
+
+Il existe aussi au niveau du pod 2 sondes essentiels permettant de vérifier l'état du pod ou de garantir que celui est prêt.
+Il s'agit des sondes suivantes :
+
+* LivenessProbe : indique si le conteneur est en cours d'exécution
+* ReadinessProbe : indique si le conteneur est prêt à recevoir du traffic
+
+NOTE: il existe une troisième sonde (startupProbe) orientée pour des applications legacy ou lourdes qui requière un temps de démarrage conséquent. Cette sonde désactive toutes les sondes tant que le contenuer n'est pas démarré.
+
+Voici un exemple:
+
+[source,console]
+----
+kubectl delete pod whoami
+cat > pod-probe.yaml << eof
+apiVersion: v1
+kind: Pod
+metadata:
+  name: whoami
+  labels:
+    name: whoami
+spec:
+  containers:
+  - name: whoami
+    image: whoami:latest
+    imagePullPolicy: IfNotPresent
+    ports:
+      - containerPort: 80
+        name: whoami-port
+    resources:
+        requests:
+          memory: 100M
+          cpu: "0.1"
+        limits:
+          memory: 150M
+          cpu: "0.4"
+    livenessProbe:
+      httpGet:
+        path: /
+        port: whoami-port
+      initialDelaySeconds: 2
+      periodSeconds: 3
+    readinessProbe:
+      httpGet:
+        path: /
+        port: whoami-port
+      initialDelaySeconds: 2
+      periodSeconds: 3
+eof
+kubectl apply -f pod-probe.yaml
+----
