@@ -119,7 +119,7 @@ Il s'agit des sondes suivantes :
 * LivenessProbe : indique si le conteneur est en cours d'exécution
 * ReadinessProbe : indique si le conteneur est prêt à recevoir du traffic
 
-NOTE: il existe une troisième sonde (startupProbe) orientée pour des applications legacy ou lourdes qui requière un temps de démarrage conséquent. Cette sonde désactive toutes les sondes tant que le contenuer n'est pas démarré.
+NOTE: il existe une troisième sonde (startupProbe) orientée pour des applications legacy ou lourdes qui requièrent un temps de démarrage conséquent. Cette sonde désactive toutes les sondes tant que le contenuer n'est pas démarré.
 
 Voici un exemple:
 
