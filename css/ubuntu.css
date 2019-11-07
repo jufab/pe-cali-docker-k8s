@@ -33,7 +33,7 @@ code{background-color: var(--greycode) !important;color:var(--white)}
 /* Table styles */
 th{background-color: var(--tertiarycolor);color:var(--white) !important;}
 
-#toc.toc2{background-color:#2C001E;color:white;}
+#toc.toc2{background-color:#ddddd8;color:white;}
 #toc.toc2.a{color:white;}
 #toctitle{color:#E95420;}
 
