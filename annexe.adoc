@@ -12,3 +12,10 @@ Un tableau est disponible à l'adresse suivante :
 
 https://kubernetes.io/docs/reference/kubectl/overview/#resource-types
 
+il est possible d'utiliser la commande: 
+
+[source,console]
+----
+kubectl api-resources
+----
+
